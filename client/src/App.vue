@@ -6,10 +6,11 @@ import { uuid } from "vue-uuid";
 import RegisterModal from "./components/RegisterModal.vue";
 import MemoItem from "./components/MemoItem.vue";
 
-import { Memo, ReceivedData } from "./types/type";
+import { Memo, ReceivedData, UpdatingData } from "./types/type";
 
-const isShowed = ref<boolean>(false);
-const showRegisterModal = () => (isShowed.value = !isShowed.value);
+const registerModalIsShowed = ref<boolean>(false);
+const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalIsShowed.value);
+
 
 const memos = ref<Memo[]>([]);
 // add
@@ -26,18 +27,28 @@ const addMemo = (receivedData: ReceivedData) => {
     content: receivedData.content,
     createdAt: createdAt,
     updatedAt: "なし",
+    isDone: false,
   });
 };
 
-// delete
-const deleteMemo = (targetId: string) => {
-  memos.value = memos.value.filter((memo) => targetId !== memo.id);
+// done
+const handleMemo = (targetId: string) => {
+  const targetMemo = memos.value.filter((memo) => memo.id === targetId)[0];
+  targetMemo.isDone = !targetMemo.isDone;
 };
 
 // parse
 const parseMemo = () => {
-  memos.value = [];
+  memos.value = memos.value.filter((memo) => memo.isDone !== true);
+  console.log(memos.value);
 };
+
+// update
+const updateMemo = ({ id, title, content}: UpdatingData) => {
+  const targetMemo = memos.value.filter((memo) => memo.id === id)[0];
+  targetMemo.title = title;
+  targetMemo.content = content
+}
 
 onMounted(() => {
   memos.value = JSON.parse(localStorage.getItem("memos") || []);
@@ -58,21 +69,22 @@ watch(
       <h1 class="text-4xl font-extrabold">メモ帳アプリ</h1>
       <p class="text-[16px] mt-2">自分のメモを管理できるアプリです。</p>
       <div class="flex flex-col gap-2">
-        <button class="mt-4 text-white bg-blue-600 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="showRegisterModal">メモを登録する</button>
-        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit">削除する</button>
+        <button class="mt-4 text-white bg-blue-600 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">メモを登録する</button>
+        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">完了したものを削除する</button>
       </div>
-      <RegisterModal v-if="isShowed" @close="showRegisterModal" @add-memo="addMemo" />
+      <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
+      <!-- <EditModal v-if="editModalIsShowed" @handle-modal="handleEditModal" /> -->
     </div>
     <div class="w-full mt-6">
       <div class="w-full flex p-3 items-center justify-around border-b-2 border-black">
-        <input type="checkbox" @change="parseMemo" />
+        <span></span>
         <span class="font-bold">タイトル</span>
         <span class="font-bold">作成日</span>
         <span class="font-bold">更新日</span>
-        <span class="font-bold">編集</span>
+        <span></span>
       </div>
       <div>
-        <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @delete-memo="deleteMemo" />
+        <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo"/>
       </div>
     </div>
   </main>
