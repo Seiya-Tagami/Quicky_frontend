@@ -14,6 +14,7 @@ const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalI
 const memos = ref<Memo[]>([]);
 const now = new Date();
 const createdAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+const updatedAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
 
 // add
 const addMemo = (addingData: AddingData) => {
@@ -26,11 +27,11 @@ const addMemo = (addingData: AddingData) => {
     title: addingData.title,
     content: addingData.content,
     createdAt: createdAt,
-    updatedAt: "なし",
+    updatedAt: updatedAt,
     isDone: false,
   });
 
-  registerModalIsShowed.value = false
+  registerModalIsShowed.value = false;
 };
 
 // done
@@ -41,8 +42,8 @@ const handleMemo = (targetId: string) => {
 
 // parse
 const parseMemo = () => {
-  const response = window.confirm('削除しますか？')
-  if(response) {
+  const response = window.confirm("削除しますか？");
+  if (response) {
     memos.value = memos.value.filter((memo) => memo.isDone !== true);
   }
 };
@@ -73,7 +74,7 @@ watch(
     <div>
       <h1 class="text-4xl font-extrabold">メモ帳アプリ</h1>
       <p class="text-[16px] mt-2">自分のメモを管理できるアプリです。</p>
-      <div class="flex flex-col gap-2">
+      <div class="flex gap-2">
         <button class="mt-4 text-white bg-blue-600 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">メモを登録する</button>
         <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">完了したものを削除する</button>
       </div>

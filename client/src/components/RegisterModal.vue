@@ -29,7 +29,7 @@ const addMemo = () => {
         <input type="text" class="p-2 flex-[1]" v-model="title" />
       </div>
       <div class="w-full border border-gray-400 mt-2">
-        <textarea id="js-body" class="w-full h-[200px]" v-model="content"></textarea>
+        <textarea id="js-body" class="w-full h-[200px] px-4 py-2" v-model="content" placeholder="本文"></textarea>
       </div>
       <button class="block mt-2 ml-auto text-white bg-blue-600 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo">登録</button>
     </div>
