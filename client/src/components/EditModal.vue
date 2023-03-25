@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 // props
 const props = defineProps({
@@ -8,14 +8,18 @@ const props = defineProps({
   content: String,
 });
 
+const title = ref<string>(props.title!);
+const content = ref<string>(props.content!);
+const allowUpdate = ref<boolean>(true);
+
+const checkContent = () => {
+  allowUpdate.value = false;
+};
 // emits
 const emit = defineEmits(["handleEditModal", "updateMemo"]);
 const handleEditModal = () => {
   emit("handleEditModal");
 };
-
-const title = ref<string>(props.title!);
-const content = ref<string>(props.content!);
 
 const updateMemo = () => {
   emit("updateMemo", { id: props.id, title: title, content: content });
@@ -31,12 +35,14 @@ const updateMemo = () => {
       </div>
       <div class="flex items-center mt-8 border border-gray-400">
         <span class="px-4 py-2 bg-gray-200 font-bold">タイトル</span>
-        <input type="text" class="p-2 flex-[1]" v-model="title" />
+        <input type="text" class="p-2 flex-[1]" v-model="title" @change="checkContent" />
       </div>
       <div class="w-full border border-gray-400 mt-2">
-        <textarea id="js-body" class="w-full h-[200px]" v-model="content"></textarea>
+        <textarea class="w-full h-[200px]" v-model="content" @change="checkContent"></textarea>
       </div>
-      <button class="block mt-2 ml-auto text-white bg-blue-600 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="updateMemo">更新</button>
+      <button class="block mt-2 ml-auto text-white bg-blue-600 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="updateMemo" :disabled="allowUpdate">
+        更新
+      </button>
     </div>
   </div>
   <div class="w-screen h-screen absolute inset-0 z-10 bg-[#07070750]" @click="handleEditModal" />

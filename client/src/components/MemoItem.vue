@@ -24,6 +24,7 @@ const handleMemo = () => {
 
 const updateMemo = (updatingData: UpdatingData) => {
   emit("updateMemo", updatingData);
+  editModalIsShowed.value = false
 };
 </script>
 

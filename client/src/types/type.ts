@@ -7,7 +7,7 @@ export type Memo = {
   isDone: boolean
 };
 
-export type ReceivedData = {
+export type AddingData = {
   title: string;
   content: string;
 };
