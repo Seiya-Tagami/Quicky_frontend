@@ -27,7 +27,7 @@ const updateMemo = () => {
 </script>
 
 <template>
-  <div class="w-[600px] bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div class="max-w-[600px] w-full bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
@@ -38,7 +38,7 @@ const updateMemo = () => {
         <input type="text" class="p-2 flex-[1]" v-model="title" @change="checkContent" />
       </div>
       <div class="w-full border border-gray-400 mt-2">
-        <textarea class="w-full h-[200px] px-4 py-2" v-model="content" @change="checkContent" placeholder="content"></textarea>
+        <textarea class="w-full md:h-[200px] h-[300px] px-4 py-2" v-model="content" @change="checkContent" placeholder="content"></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
         <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleEditModal">Cancel</button>

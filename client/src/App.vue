@@ -69,27 +69,30 @@ watch(
 </script>
 
 <template>
-  <main class="w-[1200px] mx-auto mt-[60px] bg-gray-200">
-    <div>
+  <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 p-4">
+    <div class="">
       <h1 class="text-4xl font-extrabold">Simple Memo</h1>
-      <p class="text-[18px] mt-2 text-gray-400">Makes your life better.</p>
+      <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2">
         <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
         <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">Delete what you have done</button>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
-    <div class="w-full mt-6">
-      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500">
+    <div class="w-full mt-6 md:text-[16px] text-[14px]">
+      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500 ">
         <span></span>
         <span class="font-bold">Title</span>
         <span class="font-bold">Created at</span>
         <span class="font-bold">Updated at</span>
         <span></span>
       </div>
-      <div class="h-[400px] overflow-y-auto flex flex-col gap-2 mt-4 p-2">
+      <div class="h-[400px] overflow-y-auto flex flex-col gap-2 mt-4 md:p-2">
         <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
       </div>
     </div>
   </main>
+  <footer class="w-full h-[60px] text-center">
+    <small class="leading-[60px]">&copy; 2023 SeiyaCode</small>
+  </footer>
 </template>

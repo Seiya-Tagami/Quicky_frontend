@@ -27,7 +27,7 @@ const addMemo = () => {
 </script>
 
 <template>
-  <div class="w-[600px] bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div class="max-w-[600px] w-full bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
@@ -38,7 +38,7 @@ const addMemo = () => {
         <input type="text" class="p-2 flex-[1]" v-model="title" @change="checkContent" />
       </div>
       <div class="w-full border border-gray-400 mt-2">
-        <textarea id="js-body" class="w-full h-[200px] px-4 py-2" v-model="content" placeholder="content" @change="checkContent"></textarea>
+        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2" v-model="content" placeholder="content" @change="checkContent"></textarea>
       </div>
       <button class="block mt-2 ml-auto text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo" :disabled="allowAdd">
         Register
