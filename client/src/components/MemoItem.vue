@@ -29,12 +29,12 @@ const updateMemo = (updatingData: UpdatingData) => {
 </script>
 
 <template>
-  <div class="w-full flex p-3 items-center justify-around border-b border-gray-200 hover:bg-gray-100 duration-300 relative">
+  <div class="w-full flex p-3 items-center justify-around border-l-4 border-green-400 bg-white rounded-md duration-300 relative">
     <input type="checkbox" @change="handleMemo" :checked="props.memo!.isDone" />
     <span>{{ props.memo && props.memo.title }}</span>
     <span>{{ props.memo && props.memo.createdAt }}</span>
     <span>{{ props.memo && props.memo.updatedAt }}</span>
-    <button class="text-white bg-blue-600 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleEditModal">詳細</button>
+    <button class="text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleEditModal">Detail</button>
     <div class="absolute w-[60%] h-[2px] bg-slate-500" v-show="props.memo!.isDone" />
   </div>
   <EditModal

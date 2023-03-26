@@ -27,23 +27,23 @@ const updateMemo = () => {
 </script>
 
 <template>
-  <div class="w-[600px] bg-white border rounded-md p-6 absolute top-10 left-1/2 -translate-x-[50%] z-20">
+  <div class="w-[600px] bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
     <div>
       <div class="flex justify-between items-center">
-        <h2 class="font-bold text-2xl">詳細</h2>
+        <h2 class="font-bold text-2xl">Detail</h2>
         <button @click="handleEditModal"><img src="/xmark-solid.svg" class="w-7 h-7 cursor-pointer" /></button>
       </div>
       <div class="flex items-center mt-8 border border-gray-400">
-        <span class="px-4 py-2 bg-gray-200 font-bold">タイトル</span>
+        <span class="px-4 py-2 bg-gray-200 font-bold">title</span>
         <input type="text" class="p-2 flex-[1]" v-model="title" @change="checkContent" />
       </div>
       <div class="w-full border border-gray-400 mt-2">
-        <textarea class="w-full h-[200px] px-4 py-2" v-model="content" @change="checkContent" placeholder="本文"></textarea>
+        <textarea class="w-full h-[200px] px-4 py-2" v-model="content" @change="checkContent" placeholder="content"></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleEditModal">キャンセル</button>
-        <button class="block text-white bg-blue-600 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="updateMemo" :disabled="allowUpdate">
-          更新
+        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleEditModal">Cancel</button>
+        <button class="block text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="updateMemo" :disabled="allowUpdate">
+          Update
         </button>
       </div>
     </div>

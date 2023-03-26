@@ -18,10 +18,6 @@ const updatedAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.get
 
 // add
 const addMemo = (addingData: AddingData) => {
-  if (addingData.title.trim() === "" || addingData.content.trim() === "") {
-    return;
-  }
-
   memos.value.push({
     id: uuid.v1(),
     title: addingData.title,
@@ -57,7 +53,7 @@ const updateMemo = ({ id, title, content }: UpdatingData) => {
 };
 
 onMounted(() => {
-  memos.value = JSON.parse(localStorage.getItem("memos") || []);
+  memos.value = JSON.parse(localStorage.getItem("memos")) || [];
 });
 
 watch(
@@ -70,25 +66,25 @@ watch(
 </script>
 
 <template>
-  <main class="w-[1200px] mx-auto mt-[60px]">
+  <main class="w-[1200px] mx-auto mt-[60px] bg-gray-200">
     <div>
-      <h1 class="text-4xl font-extrabold">メモ帳アプリ</h1>
-      <p class="text-[16px] mt-2">自分のメモを管理できるアプリです。</p>
+      <h1 class="text-4xl font-extrabold">Simple Memo</h1>
+      <p class="text-[18px] mt-2 text-gray-400">Makes your life better.</p>
       <div class="flex gap-2">
-        <button class="mt-4 text-white bg-blue-600 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">メモを登録する</button>
-        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">完了したものを削除する</button>
+        <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
+        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">Delete what you have done</button>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
     <div class="w-full mt-6">
-      <div class="w-full flex p-3 items-center justify-around border-b-2 border-black">
+      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500">
         <span></span>
-        <span class="font-bold">タイトル</span>
-        <span class="font-bold">作成日</span>
-        <span class="font-bold">更新日</span>
+        <span class="font-bold">Title</span>
+        <span class="font-bold">Created at</span>
+        <span class="font-bold">Updated at</span>
         <span></span>
       </div>
-      <div class="h-[400px] overflow-y-auto">
+      <div class="h-[400px] overflow-y-auto flex flex-col gap-2 mt-4 p-2">
         <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
       </div>
     </div>
