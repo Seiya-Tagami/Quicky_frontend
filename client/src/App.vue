@@ -12,6 +12,7 @@ const registerModalIsShowed = ref<boolean>(false);
 const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalIsShowed.value);
 
 const memos = ref<Memo[]>([]);
+
 const now = new Date();
 const createdAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
 const updatedAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
@@ -53,7 +54,9 @@ const updateMemo = ({ id, title, content }: UpdatingData) => {
 };
 
 onMounted(() => {
-  memos.value = JSON.parse(localStorage.getItem("memos")) || [];
+  memos.value = JSON.parse(localStorage.getItem("memos")!) || [];
+
+  console.log(memos.value);
 });
 
 watch(
