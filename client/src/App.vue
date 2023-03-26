@@ -69,7 +69,7 @@ watch(
 </script>
 
 <template>
-  <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 p-4">
+  <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
     <div class="">
       <h1 class="text-4xl font-extrabold">Simple Memo</h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
