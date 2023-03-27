@@ -37,11 +37,18 @@ const handleMemo = (targetId: string) => {
   targetMemo.isDone = !targetMemo.isDone;
 };
 
-// parse
-const parseMemo = () => {
+// delete
+const deleteMemo = () => {
+  const newMemos = memos.value.filter((memo) => memo.isDone !== true);
+
+  // validation
+  if (newMemos.length === memos.value.length) {
+    alert("削除するものが選択されていません。");
+    return;
+  }
   const response = window.confirm("削除しますか？");
   if (response) {
-    memos.value = memos.value.filter((memo) => memo.isDone !== true);
+    memos.value = newMemos;
   }
 };
 
@@ -75,12 +82,12 @@ watch(
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2">
         <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
-        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="parseMemo">Delete what you have done</button>
+        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete completed memo</button>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
-      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500 ">
+      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500">
         <span></span>
         <span class="font-bold">Title</span>
         <span class="font-bold">Created at</span>
