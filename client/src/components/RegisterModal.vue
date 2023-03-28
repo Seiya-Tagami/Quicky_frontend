@@ -31,7 +31,9 @@ const addMemo = () => {
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
-        <button @click="handleModal"><img src="/xmark-solid.svg" class="w-7 h-7 cursor-pointer" /></button>
+        <button @click="handleModal">
+          <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
+        </button>
       </div>
       <div class="flex items-center mt-8 border border-gray-400">
         <span class="px-4 py-2 bg-gray-200 font-bold">title</span>

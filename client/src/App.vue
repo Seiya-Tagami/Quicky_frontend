@@ -43,10 +43,10 @@ const deleteMemo = () => {
 
   // validation
   if (newMemos.length === memos.value.length) {
-    alert("削除するものが選択されていません。");
+    alert("Oops! no memos has been selected");
     return;
   }
-  const response = window.confirm("削除しますか？");
+  const response = window.confirm("Is it ok?");
   if (response) {
     memos.value = newMemos;
   }
