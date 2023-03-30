@@ -24,6 +24,7 @@ const handleEditModal = () => {
 const updateMemo = () => {
   emit("updateMemo", { id: props.id, title: title, content: content });
 };
+
 </script>
 
 <template>

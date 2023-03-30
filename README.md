@@ -15,7 +15,7 @@
 ## About
 
 Simple memo makes your life better.  
-With Simple Memo, you can create, update, read and delete the memo (what is called "CRUD" Operations).  
+With Simple Memo, you can create, update, read and delete a memo (what is called "CRUD" Operations).  
 Also, this product has a no database and instead, I use a localStorage to accumulate memo data.
 
 ## Getting started
@@ -36,6 +36,7 @@ This product uses the following:
 - Vue.js
 - TypeScript
 - Tailwind CSS
+- Font Awesome
 
 ## License
 

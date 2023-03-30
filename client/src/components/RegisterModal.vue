@@ -39,8 +39,8 @@ const addMemo = () => {
         <span class="px-4 py-2 bg-gray-200 font-bold">title</span>
         <input type="text" class="p-2 flex-[1]" v-model="title" @change="checkContent" />
       </div>
-      <div class="w-full border border-gray-400 mt-2">
-        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2" v-model="content" placeholder="content" @change="checkContent"></textarea>
+      <div class="w-full mt-2">
+        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400" v-model="content" placeholder="content" @change="checkContent"></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
         <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleRegisterModal">Cancel</button>
