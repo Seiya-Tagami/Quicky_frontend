@@ -21,9 +21,6 @@ Also, this product has a no database and instead, I use a localStorage to accumu
 ## Getting started
 
 ```
-cd client
-```
-```
 npm install
 ```
 ```

@@ -95,7 +95,16 @@ watch(
         <span></span>
       </div>
       <div class="h-[400px] overflow-y-auto flex flex-col gap-2 mt-4 md:p-2">
-        <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">
+          <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
+          <img
+            src="./assets/pen.png"
+            alt="pen"
+            class="md:w-[40px] md:h-[40px] w-[32px] h-[32px] cursor-pointer select-none hover:-translate-y-1 duration-200"
+            @click="handleRegisterModal"
+          />
+        </div>
       </div>
     </div>
   </main>
