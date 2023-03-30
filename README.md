@@ -13,12 +13,15 @@
 
 # About
 
-Simple memo makes your life better. 
+Simple memo makes your life better.  
 With "Simple Memo", you can create, update, read and delete the memo(what is called CRUD Operations).  
 Also, this product has a no database and instead, I use a localStorage to accumulate memo data.
 
 # Getting started
 
+```
+cd client
+```
 ```
 npm install
 ```
