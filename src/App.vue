@@ -81,8 +81,8 @@ watch(
       </h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2">
-        <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
-        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete completed memo</button>
+        <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register a new memo</button>
+        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete a completed memo</button>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
@@ -109,6 +109,6 @@ watch(
     </div>
   </main>
   <footer class="w-full h-[60px] text-center text-[18px]">
-    <small class="leading-[60px]">&copy; 2023 SeiyaCode</small>
+    <small class="leading-[60px]">&copy; {{ now.getFullYear() }} SeiyaCode</small>
   </footer>
 </template>

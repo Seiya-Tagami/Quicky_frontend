@@ -35,7 +35,7 @@ const updateMemo = (updatingData: UpdatingData) => {
   >
     <input type="checkbox" @change="handleMemo" :checked="props.memo!.isDone" class="w-4 h-4" />
     <span class="font-semibold"
-      >{{ props.memo && props.memo.title.substring(0, 8) }}<span class="text-gray-400">{{ props.memo && props.memo.title.length > 8 ? "..." : "" }}</span></span
+      >{{ props.memo && props.memo.title.substring(0, 10) }}<span class="text-gray-400">{{ props.memo && props.memo.title.length > 10 ? "..." : "" }}</span></span
     >
     <span>{{ props.memo && props.memo.createdAt }}</span>
     <span>{{ props.memo && props.memo.updatedAt }}</span>
