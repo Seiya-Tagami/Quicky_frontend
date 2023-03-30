@@ -97,7 +97,7 @@ watch(
       </div>
     </div>
   </main>
-  <footer class="w-full h-[60px] text-center">
+  <footer class="w-full h-[60px] text-center text-[18px]">
     <small class="leading-[60px]">&copy; 2023 SeiyaCode</small>
   </footer>
 </template>
