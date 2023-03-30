@@ -4,7 +4,11 @@
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
-![Simple Memo](https://user-images.githubusercontent.com/107479598/228731176-4a0a95a7-e7b8-4dd4-9271-d83c04fd0af6.png)
+### pc layout
+![Simple Memo](https://user-images.githubusercontent.com/107479598/228778761-534597e8-c04c-495a-a048-d52cb4c52880.png)
+### mobile layout
+![Simple Memo_2](https://user-images.githubusercontent.com/107479598/228795463-802a8242-56e8-45cb-b845-7b226f8c009d.png)
+
 
 
 1. [About](#About)
