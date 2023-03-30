@@ -15,7 +15,7 @@ const checkContent = () => {
 
 // emits
 const emit = defineEmits(["handleModal", "addMemo"]);
-const handleModal = () => {
+const handleRegisterModal = () => {
   emit("handleModal");
 };
 
@@ -31,7 +31,7 @@ const addMemo = () => {
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
-        <button @click="handleModal">
+        <button @click="handleRegisterModal">
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
@@ -42,10 +42,11 @@ const addMemo = () => {
       <div class="w-full border border-gray-400 mt-2">
         <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2" v-model="content" placeholder="content" @change="checkContent"></textarea>
       </div>
-      <button class="block mt-2 ml-auto text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo" :disabled="allowAdd">
-        Register
-      </button>
+      <div class="mt-2 ml-auto flex gap-2 w-fit">
+        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleRegisterModal">Cancel</button>
+        <button class="block text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo" :disabled="allowAdd">Register</button>
+      </div>
     </div>
   </div>
-  <div class="w-screen h-screen absolute inset-0 z-10 bg-[#07070750]" @click="handleModal" />
+  <div class="w-screen h-screen absolute inset-0 z-10 bg-[#07070750]" />
 </template>

@@ -62,8 +62,6 @@ const updateMemo = ({ id, title, content }: UpdatingData) => {
 
 onMounted(() => {
   memos.value = JSON.parse(localStorage.getItem("memos")!) || [];
-
-  console.log(memos.value);
 });
 
 watch(

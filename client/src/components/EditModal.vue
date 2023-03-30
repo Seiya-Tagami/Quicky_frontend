@@ -16,9 +16,9 @@ const checkContent = () => {
   allowUpdate.value = false;
 };
 // emits
-const emit = defineEmits(["handleEditModal", "updateMemo"]);
+const emit = defineEmits(["handleModal", "updateMemo"]);
 const handleEditModal = () => {
-  emit("handleEditModal");
+  emit("handleModal");
 };
 
 const updateMemo = () => {
@@ -50,5 +50,5 @@ const updateMemo = () => {
       </div>
     </div>
   </div>
-  <div class="w-screen h-screen absolute inset-0 z-10 bg-[#07070750]" @click="handleEditModal" />
+  <div class="w-screen h-screen absolute inset-0 z-10 bg-[#07070750]" />
 </template>

@@ -39,7 +39,7 @@ const updateMemo = (updatingData: UpdatingData) => {
   </div>
   <EditModal
     v-if="editModalIsShowed"
-    @handle-edit-modal="handleEditModal"
+    @handle-modal="handleEditModal"
     @update-memo="updateMemo"
     :id="props.memo!.id"
     :title="props.memo!.title"
