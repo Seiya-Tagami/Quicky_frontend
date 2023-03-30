@@ -14,8 +14,8 @@ const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalI
 const memos = ref<Memo[]>([]);
 
 const now = new Date();
-const createdAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
-const updatedAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+const createdAt = now.getMonth() + 1 + "/" + now.getDate();
+const updatedAt = now.getMonth() + 1 + "/" + now.getDate();
 
 // add
 const addMemo = (addingData: AddingData) => {
@@ -43,7 +43,7 @@ const deleteMemo = () => {
 
   // validation
   if (newMemos.length === memos.value.length) {
-    alert("Oops! no memos has been selected");
+    alert("Oops! No memos has been selected");
     return;
   }
   const response = window.confirm("Is it ok?");
@@ -76,7 +76,9 @@ watch(
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
     <div class="">
-      <h1 class="text-4xl font-extrabold">Simple Memo</h1>
+      <h1 class="text-4xl font-extrabold">
+        Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
+      </h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2">
         <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
