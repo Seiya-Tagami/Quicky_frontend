@@ -14,8 +14,8 @@ const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalI
 const memos = ref<Memo[]>([]);
 
 const now = new Date();
-const createdAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
-const updatedAt = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+const createdAt = now.getMonth() + 1 + "/" + now.getDate();
+const updatedAt = now.getMonth() + 1 + "/" + now.getDate();
 
 // add
 const addMemo = (addingData: AddingData) => {
@@ -43,7 +43,7 @@ const deleteMemo = () => {
 
   // validation
   if (newMemos.length === memos.value.length) {
-    alert("Oops! no memos has been selected");
+    alert("Oops! No memos has been selected");
     return;
   }
   const response = window.confirm("Is it ok?");
@@ -76,7 +76,9 @@ watch(
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
     <div class="">
-      <h1 class="text-4xl font-extrabold">Simple Memo</h1>
+      <h1 class="text-4xl font-extrabold">
+        Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
+      </h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2">
         <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register new memo</button>
@@ -93,7 +95,16 @@ watch(
         <span></span>
       </div>
       <div class="h-[400px] overflow-y-auto flex flex-col gap-2 mt-4 md:p-2">
-        <MemoItem v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">
+          <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
+          <img
+            src="./assets/pen.png"
+            alt="pen"
+            class="md:w-[40px] md:h-[40px] w-[32px] h-[32px] cursor-pointer select-none hover:-translate-y-1 duration-200"
+            @click="handleRegisterModal"
+          />
+        </div>
       </div>
     </div>
   </main>

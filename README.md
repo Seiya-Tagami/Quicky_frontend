@@ -2,7 +2,7 @@
 
 # Simple Memo
 
-<!-- You can check out the app on []()! -->
+You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
 ![Simple Memo](https://user-images.githubusercontent.com/107479598/228731176-4a0a95a7-e7b8-4dd4-9271-d83c04fd0af6.png)
 
@@ -20,9 +20,6 @@ Also, this product has a no database and instead, I use a localStorage to accumu
 
 ## Getting started
 
-```
-cd client
-```
 ```
 npm install
 ```
