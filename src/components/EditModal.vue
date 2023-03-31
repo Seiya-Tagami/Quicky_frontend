@@ -13,7 +13,13 @@ const content = ref<string>(props.content!);
 const allowUpdate = ref<boolean>(true);
 
 const checkContent = () => {
-  allowUpdate.value = false;
+  const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
+  const isSameContent = props.title !== title.value || props.content !== content.value;
+  if (isInputContent && isSameContent) {
+    allowUpdate.value = false;
+  } else {
+    allowUpdate.value = true;
+  }
 };
 // emits
 const emit = defineEmits(["handleModal", "updateMemo"]);
@@ -24,7 +30,6 @@ const handleEditModal = () => {
 const updateMemo = () => {
   emit("updateMemo", { id: props.id, title: title, content: content });
 };
-
 </script>
 
 <template>
