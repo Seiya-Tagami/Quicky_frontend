@@ -9,9 +9,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faXmark)
+library.add(faXmark, faCircleExclamation)
 
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
