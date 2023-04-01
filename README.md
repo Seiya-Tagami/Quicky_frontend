@@ -31,9 +31,9 @@ npm install
 npm run dev
 ```
 
-## Languages
+## Languages and Tools
 
-This product uses the following languages:
+This product uses the following things:
 - Vue.js
 - TypeScript
 - Tailwind CSS
