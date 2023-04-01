@@ -13,7 +13,8 @@ You can check out the app on [github pages](https://seiya-tagami.github.io/Simpl
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
-1. [Languages](#Languages)
+1. [Languages and Tools](#Languages%20and%20Tools)
+1. [Dev history](#Dev%20history)
 1. [License](#License)
 
 ## About
@@ -37,6 +38,7 @@ This product uses the following things:
 - Vue.js
 - TypeScript
 - Tailwind CSS
+- Vite
 - Font Awesome
 - flaticon
 
