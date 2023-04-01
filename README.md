@@ -1,6 +1,6 @@
 **This product was created in March 2023**
 
-# Simple Memo
+# Simple Memo (ver1.0-)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
@@ -18,7 +18,7 @@ You can check out the app on [github pages](https://seiya-tagami.github.io/Simpl
 
 ## About
 
-Simple memo makes your life better.  
+Simple memo makes your life better, more intuitive and productive.  
 With Simple Memo, you can create, update, read and delete a memo (what is called "CRUD" Operations).  
 Also, this product has a no database and instead, I use a localStorage to accumulate memo data.
 
@@ -33,12 +33,16 @@ npm run dev
 
 ## Languages
 
-This product uses the following:
+This product uses the following languages:
 - Vue.js
 - TypeScript
 - Tailwind CSS
 - Font Awesome
+- flaticon
 
+## Dev history
+- version1.0, released on 2023/03/30  
+In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage. 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
