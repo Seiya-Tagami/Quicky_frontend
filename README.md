@@ -1,5 +1,3 @@
-**This product was created in March 2023**
-
 # Simple Memo (ver1.0-)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
@@ -43,7 +41,7 @@ This product uses the following things:
 - flaticon
 
 ## Dev history
-- version1.0, released on 2023/03/30  
+- **version1.0, released on 2023/03/30**  
 In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage. 
 ## License
 
