@@ -1,4 +1,4 @@
-# Simple Memo (ver1.0-)
+# Simple Memo (ver1.1)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
@@ -42,7 +42,10 @@ This product uses the following things:
 
 ## Dev history
 - **version1.0, released on 2023/03/30**  
-In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage. 
+In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage.
+
+- **version1.1, released on 2023/00/00**(editing now)  
+In the version1.1, I improve part of the application UI, such as MemoItem's layout. 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
