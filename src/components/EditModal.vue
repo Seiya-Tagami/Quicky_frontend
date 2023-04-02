@@ -35,7 +35,7 @@ const updateMemo = () => {
 </script>
 
 <template>
-  <div class="max-w-[600px] w-full bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div class="max-w-[600px] md:w-full w-[95%] bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
