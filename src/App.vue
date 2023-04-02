@@ -76,19 +76,19 @@ watch(
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
     <div>
-      <h1 class="text-4xl font-extrabold">
+      <h1 class="text-4xl font-extrabold text-cyan-900">
         Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
       </h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
-      <div class="flex gap-2">
-        <button class="mt-4 text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register a new memo</button>
-        <button class="mt-4 text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete a completed memo</button>
+      <div class="flex gap-2 mt-4">
+        <button class="text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register a new memo</button>
+        <button class="text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete a completed memo</button>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
-      <h3 class="p-2 text-2xl font-semibold">Memos</h3>
-      <div class="w-full flex px-3 items-center justify-around border-b-2 border-gray-500" />
+      <h3 class="p-2 text-2xl font-semibold text-cyan-900">Memos</h3>
+      <div class="w-full flex px-3 items-center justify-around border-b-2 border-cyan-900" />
       <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto md:scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
         <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
         <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">

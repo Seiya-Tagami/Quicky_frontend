@@ -31,15 +31,15 @@ const updateMemo = (updatingData: UpdatingData) => {
 <template>
   <div
     class="w-full flex items-center justify-around p-3 md:border-l-[5px] border-l-[6px] border-blue-900 bg-white rounded-md duration-300"
-    :class="props.memo!.isDone && `!border-green-500 text-gray-300`"
+    :class="props.memo!.isDone && `!border-green-500 `"
   >
     <input type="checkbox" @change="handleMemo" :checked="props.memo?.isDone" class="w-8 h-4 cursor-pointer" />
     <div class="max-w-[480px] w-full flex md:justify-between md:flex-row flex-col ml-[36px]">
-      <span class="w-fit font-semibold relative text-[18px]">
+      <span class="w-fit font-semibold relative text-[18px] text-cyan-900 duration-300" :class="props.memo!.isDone && `!text-gray-300`">
         {{ props.memo?.title.substring(0, 15) }}<span class="text-gray-400">{{ props.memo?.title.length > 15 ? "..." : "" }}</span>
-        <div class="absolute w-[150%] h-[2px] top-1/2 left-1/2 -translate-x-1/2 bg-slate-600" v-show="props.memo?.isDone" />
+        <div class="absolute w-[150%] h-[2px] top-1/2 left-1/2 -translate-x-1/2 bg-cyan-900" v-show="props.memo?.isDone" />
       </span>
-      <div class="flex gap-2 text-gray-500" :class="props.memo!.isDone && `!text-inherit`">
+      <div class="flex gap-2 text-gray-500 duration-300" :class="props.memo!.isDone && `!text-gray-300`">
         <span>{{ props.memo?.updatedAt !== "" ? "updated at" : "created at" }}</span>
         <span>{{ props.memo?.updatedAt !== "" ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
       </div>

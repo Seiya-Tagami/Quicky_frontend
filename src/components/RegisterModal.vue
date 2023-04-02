@@ -30,7 +30,7 @@ const addMemo = () => {
 </script>
 
 <template>
-  <div class="max-w-[600px] md:w-full w-[95%] bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div class="max-w-[600px] md:w-full w-[95%] bg-white text-cyan-900 border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
@@ -42,12 +42,12 @@ const addMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to register, you should type the title and content.</span>
       </div>
-      <div class="flex items-center mt-4 border border-gray-400">
+      <div class="flex items-center mt-4 border border-gray-400 rounded">
         <span class="px-4 py-2 bg-gray-200 font-bold">title</span>
-        <input type="text" class="p-2 flex-[1]" v-model="title" />
+        <input type="text" class="p-2 flex-[1] rounded-r" v-model="title" />
       </div>
       <div class="w-full mt-2">
-        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400" v-model="content" placeholder="content"></textarea>
+        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded" v-model="content" placeholder="content"></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
         <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleRegisterModal">Cancel</button>
