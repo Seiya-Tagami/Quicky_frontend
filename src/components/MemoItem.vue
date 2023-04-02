@@ -30,17 +30,21 @@ const updateMemo = (updatingData: UpdatingData) => {
 
 <template>
   <div
-    class="w-full flex items-center justify-around p-3 md:border-l-[5px] border-l-[6px] border-blue-900 bg-white rounded-md duration-300 relative"
+    class="w-full flex items-center justify-around p-3 md:border-l-[5px] border-l-[6px] border-blue-900 bg-white rounded-md duration-300"
     :class="props.memo!.isDone && `!border-green-500 text-gray-300`"
   >
     <input type="checkbox" @change="handleMemo" :checked="props.memo!.isDone" class="w-4 h-4" />
-    <span class="font-semibold"
-      >{{ props.memo && props.memo.title.substring(0, 10) }}<span class="text-gray-400">{{ props.memo && props.memo.title.length > 10 ? "..." : "" }}</span></span
-    >
-    <span>{{ props.memo && props.memo.createdAt }}</span>
-    <span>{{ props.memo && props.memo.updatedAt }}</span>
+    <div class="max-w-[480px] w-full flex md:justify-between md:flex-row flex-col ml-[36px]">
+      <span class="w-fit font-semibold relative text-[18px]">
+        {{ props.memo && props.memo.title.substring(0, 10) }}<span class="text-gray-400">{{ props.memo && props.memo.title.length > 10 ? "..." : "" }}</span>
+        <div class="absolute w-[150%] h-[2px] top-1/2 left-1/2 -translate-x-1/2 bg-slate-600" v-show="props.memo!.isDone" />
+      </span>
+      <div class="flex gap-2 text-gray-500" :class="props.memo!.isDone && `!text-inherit`">
+        <span>{{ props.memo?.updatedAt !== "" ? "updated at" : "created at" }}</span>
+        <span>{{ props.memo?.updatedAt !== "" ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
+      </div>
+    </div>
     <button class="text-white bg-blue-900 md:p-3 p-2 font-semibold rounded w-fit" @click="handleEditModal">Detail</button>
-    <div class="absolute w-[50%] h-[2px] bg-slate-600" v-show="props.memo!.isDone" />
   </div>
   <EditModal v-if="editModalIsShowed" @handle-modal="handleEditModal" @update-memo="updateMemo" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" />
 </template>

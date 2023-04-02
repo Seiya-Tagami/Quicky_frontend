@@ -24,7 +24,7 @@ const addMemo = (addingData: AddingData) => {
     title: addingData.title,
     content: addingData.content,
     createdAt: createdAt,
-    updatedAt: updatedAt,
+    updatedAt: "",
     isDone: false,
   });
 
@@ -75,7 +75,7 @@ watch(
 
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
-    <div class="">
+    <div>
       <h1 class="text-4xl font-extrabold">
         Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
       </h1>
@@ -87,14 +87,9 @@ watch(
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
-      <div class="w-full flex p-3 items-center justify-around border-b-2 border-gray-500">
-        <span></span>
-        <span class="font-bold">Title</span>
-        <span class="font-bold">Created at</span>
-        <span class="font-bold">Updated at</span>
-        <span></span>
-      </div>
-      <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
+      <h3 class="p-2 text-2xl font-semibold">Memos</h3>
+      <div class="w-full flex px-3 items-center justify-around border-b-2 border-gray-500" />
+      <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto md:scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
         <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
         <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">
           <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
