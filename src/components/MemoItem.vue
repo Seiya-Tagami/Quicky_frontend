@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import EditModal from "./EditModal.vue";
-import { UpdatingData } from "../types/type";
+import { UpdatingData } from "../types"
 
 const editModalIsShowed = ref<boolean>(false);
 const isDone = ref<boolean>(false);

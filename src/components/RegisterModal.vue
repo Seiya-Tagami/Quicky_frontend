@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import ActionButton from "./partials/ActionButton.vue";
+
 const title = ref<string>("");
 const content = ref<string>("");
 
@@ -50,8 +52,8 @@ const addMemo = () => {
         <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded" v-model="content" placeholder="content"></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleRegisterModal">Cancel</button>
-        <button class="block text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo">Register</button>
+        <ActionButton :btn-color="`bg-gray-500`" @on-click="handleRegisterModal">Cancel</ActionButton>
+        <ActionButton :btn-color="`bg-blue-900`" @on-click="addMemo">Register</ActionButton>
       </div>
     </div>
   </div>

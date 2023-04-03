@@ -6,7 +6,11 @@ import { uuid } from "vue-uuid";
 import RegisterModal from "./components/RegisterModal.vue";
 import MemoItem from "./components/MemoItem.vue";
 
-import { Memo, AddingData, UpdatingData } from "./types/type";
+// partials
+import ThemeChangeButton from "./components/partials/ThemeChangeToggleButton.vue";
+import ActionButton from "./components/partials/ActionButton.vue";
+
+import { Memo, AddingData, UpdatingData } from "./types";
 
 const registerModalIsShowed = ref<boolean>(false);
 const handleRegisterModal = () => (registerModalIsShowed.value = !registerModalIsShowed.value);
@@ -75,14 +79,15 @@ watch(
 
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
+    <ThemeChangeButton />
     <div>
       <h1 class="text-4xl font-extrabold text-cyan-900">
         Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
       </h1>
       <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
       <div class="flex gap-2 mt-4">
-        <button class="text-white bg-blue-900 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="handleRegisterModal">Register a new memo</button>
-        <button class="text-white bg-gray-500 px-3 py-3 text-[16px] font-semibold rounded w-fit" @click="deleteMemo">Delete a completed memo</button>
+        <ActionButton :btn-color="`bg-blue-900`" @click="handleRegisterModal">Register a new memo</ActionButton>
+        <ActionButton :btn-color="`bg-gray-500`" @click="deleteMemo">Delete a completed memo</ActionButton>
       </div>
       <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
