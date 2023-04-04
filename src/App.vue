@@ -64,8 +64,23 @@ const updateMemo = ({ id, title, content }: UpdatingData) => {
   targetMemo.updatedAt = updatedAt;
 };
 
+const isDark = ref<boolean>(false);
+const BODY = document.querySelector("body");
+const changeTheme = () => {
+  isDark.value = !isDark.value;
+  BODY!.classList.toggle("bg-gray-800");
+};
+
 onMounted(() => {
   memos.value = JSON.parse(localStorage.getItem("memos")!) || [];
+  isDark.value = JSON.parse(localStorage.getItem("isDark")!) || false;
+
+  if (isDark.value) document.body.classList.add("bg-gray-800");
+  else document.body.classList.remove("bg-gray-800");
+
+  setTimeout(() => {
+    BODY!.classList.add("force-duration");
+  }, 100);
 });
 
 watch(
@@ -75,27 +90,31 @@ watch(
   },
   { deep: true }
 );
+
+watch(isDark, (newVal) => {
+  localStorage.setItem("isDark", JSON.stringify(newVal));
+});
 </script>
 
 <template>
-  <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
-    <Menu />
+  <main class="max-w-[1200px] mx-auto mt-[60px] px-4">
+    <Menu @on-click="changeTheme" :isDark="isDark" />
     <div>
-      <h1 class="text-4xl font-extrabold text-cyan-900">
+      <h1 class="text-4xl font-extrabold text-cyan-900" :class="isDark && `!text-cyan-600`">
         Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
       </h1>
-      <p class="text-[18px] mt-2 text-gray-400">Make your life better.</p>
+      <p class="text-[18px] mt-2 text-gray-400" :class="isDark && `!text-gray-300`">Make your life better.</p>
       <div class="flex gap-2 mt-4">
-        <ActionButton :btn-color="`bg-blue-900`" @click="handleRegisterModal">Register a new memo</ActionButton>
-        <ActionButton :btn-color="`bg-gray-500`" @click="deleteMemo">Delete a completed memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleRegisterModal">Register a new memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="deleteMemo">Delete a completed memo</ActionButton>
       </div>
-      <RegisterModal v-if="registerModalIsShowed" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
+      <RegisterModal v-if="registerModalIsShowed" :isDark="isDark" @handle-modal="handleRegisterModal" @add-memo="addMemo" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
-      <h3 class="p-2 text-2xl font-semibold text-cyan-900">Memos</h3>
-      <div class="w-full flex px-3 items-center justify-around border-b-2 border-cyan-900" />
+      <h3 class="p-2 text-2xl font-semibold text-cyan-900" :class="isDark && `!text-cyan-600`">Memos</h3>
+      <div class="w-full flex px-3 items-center justify-around border-b-2 border-cyan-900" :class="isDark && `!border-cyan-600`" />
       <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto md:scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
-        <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :isDark="isDark" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
         <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">
           <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
           <img
@@ -108,7 +127,7 @@ watch(
       </div>
     </div>
   </main>
-  <footer class="w-full h-[60px] text-center text-[18px]">
+  <footer class="w-full h-[60px] text-center text-[18px]" :class="isDark && `text-white`">
     <small class="leading-[60px]">&copy; {{ now.getFullYear() }} SeiyaCode</small>
   </footer>
 </template>
