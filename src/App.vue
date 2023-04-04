@@ -3,11 +3,11 @@ import { ref, watch, onMounted } from "vue";
 import { uuid } from "vue-uuid";
 
 // components
+import Menu from "./components/Menu.vue";
 import RegisterModal from "./components/RegisterModal.vue";
 import MemoItem from "./components/MemoItem.vue";
 
 // partials
-import ThemeChangeButton from "./components/partials/ThemeChangeToggleButton.vue";
 import ActionButton from "./components/partials/ActionButton.vue";
 
 import { Memo, AddingData, UpdatingData } from "./types";
@@ -61,7 +61,7 @@ const updateMemo = ({ id, title, content }: UpdatingData) => {
   const targetMemo = memos.value.filter((memo) => memo.id === id)[0];
   targetMemo.title = title;
   targetMemo.content = content;
-  targetMemo.updatedAt = createdAt;
+  targetMemo.updatedAt = updatedAt;
 };
 
 onMounted(() => {
@@ -79,7 +79,7 @@ watch(
 
 <template>
   <main class="max-w-[1200px] mx-auto mt-[60px] bg-gray-200 px-4">
-    <ThemeChangeButton />
+    <Menu />
     <div>
       <h1 class="text-4xl font-extrabold text-cyan-900">
         Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
