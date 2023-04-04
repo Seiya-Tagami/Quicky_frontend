@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import ActionButton from "./partials/ActionButton.vue";
+
 // props
 const props = defineProps({
   id: String,
   title: String,
   content: String,
+  isDark: Boolean,
 });
 
 const title = ref<string>(props.title!);
@@ -35,7 +38,10 @@ const updateMemo = () => {
 </script>
 
 <template>
-  <div class="max-w-[600px] w-full bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div
+    class="max-w-[600px] md:w-full w-[95%] border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom"
+    :class="props.isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
+  >
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
@@ -47,16 +53,21 @@ const updateMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to update, you should change the title or content.</span>
       </div>
-      <div class="mt-4 flex items-center border border-gray-400">
-        <span class="px-4 py-2 bg-gray-200 font-bold">title</span>
-        <input type="text" class="p-2 flex-[1]" v-model="title" />
+      <div class="mt-4 flex items-center text-gray-300 border border-gray-400 rounded">
+        <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="props.isDark && `bg-gray-700`">title</span>
+        <input type="text" class="p-2 flex-[1] rounded-r" :class="props.isDark && `bg-gray-800`" v-model="title" />
       </div>
-      <div class="w-full mt-2">
-        <textarea class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400" v-model="content" placeholder="content"></textarea>
+      <div class="w-full mt-2 text-gray-300">
+        <textarea
+          class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
+          :class="props.isDark && `bg-gray-800`"
+          v-model="content"
+          placeholder="content"
+        ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleEditModal">Cancel</button>
-        <button class="block text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="updateMemo">Update</button>
+        <ActionButton :btn-color="props.isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>
+        <ActionButton :btn-color="props.isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
       </div>
     </div>
   </div>

@@ -1,13 +1,12 @@
-# Simple Memo (ver1.0-)
+# Simple Memo (ver1.1)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
-### pc layout
-<img src="https://user-images.githubusercontent.com/107479598/228778761-534597e8-c04c-495a-a048-d52cb4c52880.png"/>
+### pc layout (light theme)
+<img src="https://user-images.githubusercontent.com/107479598/229725280-914121e8-bee0-4209-8f4a-f61267850bc7.png"/>
 
-### mobile layout
-<img src="https://user-images.githubusercontent.com/107479598/228795463-802a8242-56e8-45cb-b845-7b226f8c009d.png" height="600"/>
-
+### mobile layout (dark theme)
+<img src="https://user-images.githubusercontent.com/107479598/229726542-34568f0e-b58b-4b03-b113-c3f4ad04e746.png" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
@@ -42,7 +41,10 @@ This product uses the following things:
 
 ## Dev history
 - **version1.0, released on 2023/03/30**  
-In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage. 
+In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage.
+
+- **version1.1, released on 2023/04/00**(editing)  
+In the version 1.1, I improve whole of the application UI, but specifically, I work hard to review MemoItem's UI and make it better. Also, I introduce "dark-theme-mode", which will let your experience more exciting!
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

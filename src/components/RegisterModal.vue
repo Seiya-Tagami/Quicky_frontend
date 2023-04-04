@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import ActionButton from "./partials/ActionButton.vue";
+
 const title = ref<string>("");
 const content = ref<string>("");
 
 const preventAdd = ref<boolean>(false);
+
+const props = defineProps({
+  isDark: Boolean,
+});
+
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
   if (isInputContent) {
@@ -30,7 +37,10 @@ const addMemo = () => {
 </script>
 
 <template>
-  <div class="max-w-[600px] w-full bg-white border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom">
+  <div
+    class="max-w-[600px] md:w-full w-[95%] border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom"
+    :class="props.isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
+  >
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
@@ -42,16 +52,22 @@ const addMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to register, you should type the title and content.</span>
       </div>
-      <div class="flex items-center mt-4 border border-gray-400">
-        <span class="px-4 py-2 bg-gray-200 font-bold">title</span>
-        <input type="text" class="p-2 flex-[1]" v-model="title" />
+      <div class="flex items-center mt-4 text-gray-300 border border-gray-400 rounded">
+        <span class="px-4 py-2 bg-gray-200 font-bold text-gray-400 rounded-l" :class="props.isDark && `bg-gray-700`">title</span>
+        <input type="text" class="p-2 flex-[1] rounded-r" :class="props.isDark && `bg-gray-800`" v-model="title" />
       </div>
-      <div class="w-full mt-2">
-        <textarea id="js-body" class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400" v-model="content" placeholder="content"></textarea>
+      <div class="w-full mt-2 text-gray-300">
+        <textarea
+          id="js-body"
+          class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
+          :class="props.isDark && `bg-gray-800`"
+          v-model="content"
+          placeholder="content"
+        ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <button class="block text-white bg-gray-500 px-4 py-3 text-[16px] font-semibold rounded w-fit disabled:bg-slate-300" @click="handleRegisterModal">Cancel</button>
-        <button class="block text-white bg-blue-900 disabled:bg-slate-300 px-4 py-3 text-[16px] font-semibold rounded w-fit" @click="addMemo">Register</button>
+        <ActionButton :btn-color="props.isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleRegisterModal">Cancel</ActionButton>
+        <ActionButton :btn-color="props.isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="addMemo">Register</ActionButton>
       </div>
     </div>
   </div>
