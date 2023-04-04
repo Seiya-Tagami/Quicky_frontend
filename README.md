@@ -43,7 +43,7 @@ This product uses the following things:
 - **version1.0, released on 2023/03/30**  
 In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage.
 
-- **version1.1, released on 2023/04/04** 
+- **version1.1, released on 2023/04/04**  
 In the version 1.1, I improve whole of the application UI, but specifically, I work hard to review MemoItem's UI and make it better. Also, I introduce "dark-theme-mode", which will let your experience more exciting!
 ## License
 
