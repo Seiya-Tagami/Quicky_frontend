@@ -115,13 +115,12 @@ watch(isDark, (newVal) => {
       <div class="w-full flex px-3 items-center justify-around border-b-2 border-cyan-900" :class="isDark && `!border-cyan-600`" />
       <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto md:scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
         <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :isDark="isDark" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
-        <div v-else class="mx-auto mt-6 flex gap-2 font-semibold">
+        <div v-else class="mx-auto mt-6 flex gap-2 font-semibold" :class="isDark && `text-white`">
           <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
-          <img
-            src="./assets/pen.png"
-            alt="pen"
-            class="md:w-[40px] md:h-[40px] w-[32px] h-[32px] cursor-pointer select-none hover:-translate-y-1 duration-200"
+          <font-awesome-icon
+            :icon="['fas', 'pen']"
             @click="handleRegisterModal"
+            class="md:w-[40px] md:h-[40px] w-[30px] h-[30px] cursor-pointer select-none hover:-translate-y-1 duration-200"
           />
         </div>
       </div>
