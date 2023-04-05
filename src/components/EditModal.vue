@@ -53,11 +53,11 @@ const updateMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to update, you should change the title or content.</span>
       </div>
-      <div class="mt-4 flex items-center text-gray-300 border border-gray-400 rounded">
+      <div class="mt-4 flex items-center border border-gray-400 rounded" :class="props.isDark && `text-gray-300`">
         <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="props.isDark && `bg-gray-700`">title</span>
         <input type="text" class="p-2 flex-[1] rounded-r" :class="props.isDark && `bg-gray-800`" v-model="title" />
       </div>
-      <div class="w-full mt-2 text-gray-300">
+      <div class="w-full mt-2" :class="props.isDark && `text-gray-300`">
         <textarea
           class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
           :class="props.isDark && `bg-gray-800`"
