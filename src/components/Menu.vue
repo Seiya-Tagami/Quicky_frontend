@@ -20,7 +20,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <div>
+  <div class="overflow-hidden">
     <MenuToggleButton @show-menu="showMenu" :isDark="props.isDark" />
     <MiniModal v-show="isShow" @on-click="onClick" :isDark="props.isDark" />
   </div>
