@@ -13,7 +13,6 @@ const onClick = () => {
     isSpin.value = false;
   }, 2000);
 };
-
 </script>
 
 <template>
@@ -23,7 +22,9 @@ const onClick = () => {
   >
     <div class="w-full flex items-center justify-start gap-[16px] px-3 py-3 border-cyan-900 border-b-[1px]" :class="props.isDark && `!border-cyan-600`">
       <span class="font-semibold">Appearance</span>
-      <font-awesome-icon :icon="['fas', 'circle-half-stroke']" class="text-2xl cursor-pointer" :class="isSpin && `fa-spin-pulse`" @click="onClick" />
+      <button @click="onClick" :disabled="isSpin ? true : false">
+        <font-awesome-icon :icon="['fas', 'circle-half-stroke']" class="text-2xl cursor-pointer" :class="isSpin && `fa-spin-pulse`" />
+      </button>
     </div>
     <div>
       <div class="flex items-center justify-start gap-6 px-3 py-2">
