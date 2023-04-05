@@ -97,7 +97,7 @@ watch(isDark, (newVal) => {
 </script>
 
 <template>
-  <main class="max-w-[1200px] mx-auto pt-[60px] px-4">
+  <main class="max-w-[1200px] mx-auto pt-[60px] px-4 overflow-hidden">
     <Menu @on-click="changeTheme" :isDark="isDark" />
     <div>
       <h1 class="text-4xl font-extrabold text-cyan-900" :class="isDark && `!text-cyan-600`">
