@@ -2,26 +2,16 @@
 import MenuToggleButton from "./partials/MenuToggleButton.vue";
 import MiniModal from "./partials/MiniModal.vue";
 
-import { ref } from "vue";
-const isShow = ref<boolean>(false);
+import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
+import { storeToRefs } from "pinia";
 
-const props = defineProps({
-  isDark: Boolean,
-});
-
-const showMenu = () => {
-  isShow.value = !isShow.value;
-};
-
-const emits = defineEmits(["onClick"]);
-const onClick = () => {
-  emits("onClick");
-};
+const store = useUserInterfaceStore();
+const { isDark, isOpen } = storeToRefs(store);
 </script>
 
 <template>
   <div class="overflow-hidden">
-    <MenuToggleButton @show-menu="showMenu" :isDark="props.isDark" />
-    <MiniModal v-show="isShow" @on-click="onClick" :isDark="props.isDark" />
+    <MenuToggleButton @open-menu="store.openMenu" :isDark="isDark" />
+    <MiniModal v-show="isOpen" @on-click="store.changeTheme" :isDark="isDark" />
   </div>
 </template>

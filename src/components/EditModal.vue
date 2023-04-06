@@ -2,13 +2,16 @@
 import { ref } from "vue";
 
 import ActionButton from "./partials/ActionButton.vue";
+import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
+import { storeToRefs } from "pinia";
+const store = useUserInterfaceStore();
+const { isDark } = storeToRefs(store);
 
 // props
 const props = defineProps({
   id: String,
   title: String,
   content: String,
-  isDark: Boolean,
 });
 
 const title = ref<string>(props.title!);
@@ -25,10 +28,7 @@ const checkContent = () => {
   }
 };
 // emits
-const emit = defineEmits(["handleModal", "updateMemo"]);
-const handleEditModal = () => {
-  emit("handleModal");
-};
+const emit = defineEmits(["updateMemo"]);
 
 const updateMemo = () => {
   checkContent();
@@ -40,12 +40,12 @@ const updateMemo = () => {
 <template>
   <div
     class="max-w-[600px] md:w-full w-[95%] border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom"
-    :class="props.isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
+    :class="isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
   >
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
-        <button @click="handleEditModal">
+        <button @click="store.handleEditModal">
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
@@ -53,21 +53,21 @@ const updateMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to update, you should change the title or content.</span>
       </div>
-      <div class="mt-4 flex items-center border border-gray-400 rounded" :class="props.isDark && `text-gray-300`">
-        <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="props.isDark && `bg-gray-700`">title</span>
-        <input type="text" class="p-2 flex-[1] rounded-r" :class="props.isDark && `bg-gray-800`" v-model="title" />
+      <div class="mt-4 flex items-center border border-gray-400 rounded" :class="isDark && `text-gray-300`">
+        <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="isDark && `bg-gray-700`">title</span>
+        <input type="text" class="p-2 flex-[1] rounded-r" :class="isDark && `bg-gray-800`" v-model="title" />
       </div>
-      <div class="w-full mt-2" :class="props.isDark && `text-gray-300`">
+      <div class="w-full mt-2" :class="isDark && `text-gray-300`">
         <textarea
           class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
-          :class="props.isDark && `bg-gray-800`"
+          :class="isDark && `bg-gray-800`"
           v-model="content"
           placeholder="content"
         ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <ActionButton :btn-color="props.isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>
-        <ActionButton :btn-color="props.isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="store.handleEditModal">Cancel</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
       </div>
     </div>
   </div>

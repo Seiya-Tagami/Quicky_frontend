@@ -6,9 +6,9 @@ const props = defineProps({
 });
 
 const isOpen = ref<boolean>(false);
-const emits = defineEmits(["showMenu"]);
+const emits = defineEmits(["openMenu"]);
 const onClick = () => {
-  emits("showMenu");
+  emits("openMenu");
   isOpen.value = !isOpen.value;
 };
 </script>
