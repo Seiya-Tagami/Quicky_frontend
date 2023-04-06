@@ -5,8 +5,7 @@ You can check out the app on [github pages](https://seiya-tagami.github.io/Simpl
 ## Preview
 ### pc layout (light theme)
 
-<img src="
-https://user-images.githubusercontent.com/107479598/230277754-545249c9-bfd7-440d-9e40-f8084e0b7622.png"/>
+<img src="https://user-images.githubusercontent.com/107479598/230277754-545249c9-bfd7-440d-9e40-f8084e0b7622.png"/>
 
 ### mobile layout (dark theme)
 
