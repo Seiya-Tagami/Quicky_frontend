@@ -5,9 +5,9 @@ const props = defineProps({
 });
 
 const isSpin = ref<boolean>(false);
-const emits = defineEmits(["onClick"]);
+const emits = defineEmits(["on-click"]);
 const onClick = () => {
-  emits("onClick");
+  emits("on-click");
   isSpin.value = true;
   setTimeout(() => {
     isSpin.value = false;
