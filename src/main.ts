@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 
@@ -12,6 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faXmark, faCircleExclamation, faEllipsis, faCircleHalfStroke, faPen } from '@fortawesome/free-solid-svg-icons'
 library.add(faXmark, faCircleExclamation, faEllipsis, faCircleHalfStroke, faPen)
 
+const pinia = createPinia()
+
 createApp(App)
+  .use(pinia)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app')
