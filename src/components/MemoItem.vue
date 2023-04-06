@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import EditModal from "./EditModal.vue";
-import { UpdatingData } from "../types";
 
 // pinia
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
+import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
-const store = useUserInterfaceStore();
-const { isDark, editModalIsShowed } = storeToRefs(store);
+const uiStore = useUserInterfaceStore();
+const { isDark, editModalIsShowed } = storeToRefs(uiStore);
+const memoStore = useMemoStore();
 
 const isDone = ref<boolean>(false);
 
@@ -16,19 +17,13 @@ const props = defineProps({
   memo: Object,
 });
 
-// emits
-const emit = defineEmits(["handleMemo", "updateMemo"]);
+// functions
 const handleMemo = () => {
   if (!props.memo) return;
-  emit("handleMemo", props.memo.id);
-
+  memoStore.handleMemo(props.memo.id);
   isDone.value = !isDone.value;
 };
 
-const updateMemo = (updatingData: UpdatingData) => {
-  emit("updateMemo", updatingData);
-  editModalIsShowed.value = false;
-};
 </script>
 
 <template>
@@ -47,7 +42,7 @@ const updateMemo = (updatingData: UpdatingData) => {
         <span class="font-semibold">{{ props.memo?.updatedAt !== "" ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
       </div>
     </div>
-    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="store.handleEditModal">Detail</button>
+    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="uiStore.handleEditModal">Detail</button>
   </div>
-  <EditModal v-if="editModalIsShowed" @update-memo="updateMemo" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" />
+  <EditModal v-if="editModalIsShowed" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" />
 </template>

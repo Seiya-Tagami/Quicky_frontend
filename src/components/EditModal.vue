@@ -3,9 +3,11 @@ import { ref } from "vue";
 
 import ActionButton from "./partials/ActionButton.vue";
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
+import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
-const store = useUserInterfaceStore();
-const { isDark } = storeToRefs(store);
+const uiStore = useUserInterfaceStore();
+const { isDark, editModalIsShowed } = storeToRefs(uiStore);
+const memoStore = useMemoStore();
 
 // props
 const props = defineProps({
@@ -18,6 +20,7 @@ const title = ref<string>(props.title!);
 const content = ref<string>(props.content!);
 const preventUpdate = ref<boolean>(false);
 
+// functions
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
   const isSameContent = props.title !== title.value || props.content !== content.value;
@@ -27,13 +30,12 @@ const checkContent = () => {
     preventUpdate.value = true;
   }
 };
-// emits
-const emit = defineEmits(["updateMemo"]);
 
 const updateMemo = () => {
   checkContent();
   if (preventUpdate.value) return;
-  emit("updateMemo", { id: props.id, title: title, content: content });
+  memoStore.updateMemo({ id: props.id!, title: title.value, content: content.value });
+  editModalIsShowed.value = false;
 };
 </script>
 
@@ -45,7 +47,7 @@ const updateMemo = () => {
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
-        <button @click="store.handleEditModal">
+        <button @click="uiStore.handleEditModal">
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
@@ -66,7 +68,7 @@ const updateMemo = () => {
         ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="store.handleEditModal">Cancel</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleEditModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
       </div>
     </div>

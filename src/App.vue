@@ -10,61 +10,15 @@ import MemoItem from "./components/MemoItem.vue";
 // partials
 import ActionButton from "./components/partials/ActionButton.vue";
 
-import { Memo, AddingData, UpdatingData } from "./types";
-
 // pinia
 import { useUserInterfaceStore } from "./stores/UserInterfaceStore";
+import { useMemoStore } from "./stores/MemoStore";
 import { storeToRefs } from "pinia";
-const store = useUserInterfaceStore();
-const { isDark, registerModalIsShowed } = storeToRefs(store);
+const uiStore = useUserInterfaceStore();
+const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
+const memoStore = useMemoStore();
+const { memos, now } = storeToRefs(memoStore);
 
-const memos = ref<Memo[]>([]);
-const now = new Date();
-const createdAt = now.getMonth() + 1 + "/" + now.getDate();
-const updatedAt = now.getMonth() + 1 + "/" + now.getDate();
-
-// add
-const addMemo = (addingData: AddingData) => {
-  memos.value.push({
-    id: uuid.v1(),
-    title: addingData.title,
-    content: addingData.content,
-    createdAt: createdAt,
-    updatedAt: "",
-    isDone: false,
-  });
-
-  registerModalIsShowed.value = false;
-};
-
-// done
-const handleMemo = (targetId: string) => {
-  const targetMemo = memos.value.filter((memo) => memo.id === targetId)[0];
-  targetMemo.isDone = !targetMemo.isDone;
-};
-
-// delete
-const deleteMemo = () => {
-  const newMemos = memos.value.filter((memo) => memo.isDone !== true);
-
-  // validation
-  if (newMemos.length === memos.value.length) {
-    alert("Oops! No memos has been selected");
-    return;
-  }
-  const response = window.confirm("Is it ok?");
-  if (response) {
-    memos.value = newMemos;
-  }
-};
-
-// update
-const updateMemo = ({ id, title, content }: UpdatingData) => {
-  const targetMemo = memos.value.filter((memo) => memo.id === id)[0];
-  targetMemo.title = title;
-  targetMemo.content = content;
-  targetMemo.updatedAt = updatedAt;
-};
 
 const BODY = document.querySelector("body");
 onMounted(() => {
@@ -101,16 +55,16 @@ watch(isDark, (newVal) => {
       </h1>
       <p class="text-[18px] mt-2 text-gray-400" :class="isDark && `!text-gray-300`">Make your life better.</p>
       <div class="flex gap-2 mt-4">
-        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @click="store.handleRegisterModal">Register a new memo</ActionButton>
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="deleteMemo">Delete a completed memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @click="uiStore.handleRegisterModal">Register a new memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="memoStore.deleteMemo">Delete a completed memo</ActionButton>
       </div>
-      <RegisterModal v-if="registerModalIsShowed" @add-memo="addMemo" />
+      <RegisterModal v-if="registerModalIsShowed" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
       <h3 class="p-2 text-2xl font-semibold text-cyan-900" :class="isDark && `!text-cyan-600`">Memos</h3>
       <div class="w-full flex px-3 items-center justify-around border-b-2 border-cyan-900" :class="isDark && `!border-cyan-600`" />
       <div class="h-[400px] flex flex-col gap-2 mt-4 md:p-2 overflow-y-auto md:scrollbar scrollbar-thumb-slate-400 scrollbar-track-slate-700">
-        <MemoItem v-if="memos.length" v-for="memo in memos" :memo="memo" :key="memo.title" @handle-memo="handleMemo" @update-memo="updateMemo" />
+        <MemoItem v-if="memos?.length" v-for="memo in memos" :memo="memo" :key="memo.title" />
         <div v-else class="mx-auto mt-6 flex gap-2 font-semibold" :class="isDark && `text-white`">
           <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
           <font-awesome-icon :icon="['fas', 'pen']" class="md:w-[40px] md:h-[40px] w-[30px] h-[30px] cursor-pointer select-none hover:-translate-y-1 duration-200" />

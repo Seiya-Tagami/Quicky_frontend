@@ -5,15 +5,17 @@ import ActionButton from "./partials/ActionButton.vue";
 
 // pinia
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
+import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
-const store = useUserInterfaceStore();
-const { isDark } = storeToRefs(store);
+const uiStore = useUserInterfaceStore();
+const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
+const memoStore = useMemoStore();
 
 const title = ref<string>("");
 const content = ref<string>("");
-
 const preventAdd = ref<boolean>(false);
 
+// functions
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
   if (isInputContent) {
@@ -23,15 +25,13 @@ const checkContent = () => {
   }
 };
 
-// emits
-const emit = defineEmits(["addMemo"]);
-
 const addMemo = () => {
   checkContent();
   if (preventAdd.value) return;
-  emit("addMemo", { title: title.value, content: content.value });
+  memoStore.addMemo({ title: title.value, content: content.value });
   title.value = "";
   content.value = "";
+  registerModalIsShowed.value = false;
 };
 </script>
 
@@ -43,7 +43,7 @@ const addMemo = () => {
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">New memo</h2>
-        <button @click="store.handleRegisterModal">
+        <button @click="uiStore.handleRegisterModal">
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
@@ -65,7 +65,7 @@ const addMemo = () => {
         ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="store.handleRegisterModal">Cancel</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleRegisterModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="addMemo">Register</ActionButton>
       </div>
     </div>
