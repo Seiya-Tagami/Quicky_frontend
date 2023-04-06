@@ -2,13 +2,15 @@
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
+## Preview
 ### pc layout (light theme)
 
-<img src=""/>
+<img src="
+https://user-images.githubusercontent.com/107479598/230277754-545249c9-bfd7-440d-9e40-f8084e0b7622.png"/>
 
 ### mobile layout (dark theme)
 
-<img src="" height="600"/>
+<img src="https://user-images.githubusercontent.com/107479598/230278520-f92cc6ff-f46d-4298-8c25-04cb2ce52a5d.png" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
