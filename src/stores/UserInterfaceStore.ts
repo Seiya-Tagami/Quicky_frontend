@@ -5,7 +5,6 @@ export const useUserInterfaceStore = defineStore("UserInterface", {
     isDark: false,
     isOpen: false,
     registerModalIsShowed: false,
-    editModalIsShowed: false,
   }),
   actions: {
     changeTheme() {
@@ -18,8 +17,5 @@ export const useUserInterfaceStore = defineStore("UserInterface", {
     handleRegisterModal() {
       this.registerModalIsShowed = !this.registerModalIsShowed;
     },
-    handleEditModal() {
-      this.editModalIsShowed = !this.editModalIsShowed;
-    }
   },
 });

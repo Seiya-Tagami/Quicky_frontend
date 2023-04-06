@@ -7,10 +7,11 @@ import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
 const uiStore = useUserInterfaceStore();
-const { isDark, editModalIsShowed } = storeToRefs(uiStore);
+const { isDark } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 const isDone = ref<boolean>(false);
+const editModalIsShowed = ref<boolean>(false);
 
 // props
 const props = defineProps({
@@ -24,6 +25,9 @@ const handleMemo = () => {
   isDone.value = !isDone.value;
 };
 
+const handleEditModal = () => {
+  editModalIsShowed.value = !editModalIsShowed.value;
+};
 </script>
 
 <template>
@@ -42,7 +46,14 @@ const handleMemo = () => {
         <span class="font-semibold">{{ props.memo?.updatedAt !== "" ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
       </div>
     </div>
-    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="uiStore.handleEditModal">Detail</button>
+    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleEditModal">Detail</button>
   </div>
-  <EditModal v-if="editModalIsShowed" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" />
+  <EditModal
+    v-if="editModalIsShowed"
+    :id="props.memo!.id"
+    :title="props.memo!.title"
+    :content="props.memo!.content"
+    :editModalIsShowed="editModalIsShowed"
+    @on-click="handleEditModal"
+  />
 </template>

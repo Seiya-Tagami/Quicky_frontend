@@ -6,7 +6,7 @@ import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
 const uiStore = useUserInterfaceStore();
-const { isDark, editModalIsShowed } = storeToRefs(uiStore);
+const { isDark } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // props
@@ -21,6 +21,11 @@ const content = ref<string>(props.content!);
 const preventUpdate = ref<boolean>(false);
 
 // functions
+const emits = defineEmits(["on-click"]);
+const handleEditModal = () => {
+  emits("on-click");
+};
+
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
   const isSameContent = props.title !== title.value || props.content !== content.value;
@@ -35,7 +40,7 @@ const updateMemo = () => {
   checkContent();
   if (preventUpdate.value) return;
   memoStore.updateFn({ id: props.id!, title: title.value, content: content.value });
-  editModalIsShowed.value = false;
+  handleEditModal();
 };
 </script>
 
@@ -47,7 +52,7 @@ const updateMemo = () => {
     <div>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-2xl">Detail</h2>
-        <button @click="uiStore.handleEditModal">
+        <button @click="handleEditModal">
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
@@ -68,7 +73,7 @@ const updateMemo = () => {
         ></textarea>
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleEditModal">Cancel</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
       </div>
     </div>
