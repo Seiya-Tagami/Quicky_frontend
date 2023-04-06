@@ -34,7 +34,7 @@ const checkContent = () => {
 const updateMemo = () => {
   checkContent();
   if (preventUpdate.value) return;
-  memoStore.updateMemo({ id: props.id!, title: title.value, content: content.value });
+  memoStore.updateFn({ id: props.id!, title: title.value, content: content.value });
   editModalIsShowed.value = false;
 };
 </script>

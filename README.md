@@ -4,11 +4,11 @@ You can check out the app on [github pages](https://seiya-tagami.github.io/Simpl
 
 ### pc layout (light theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/229725280-914121e8-bee0-4209-8f4a-f61267850bc7.png"/>
+<img src=""/>
 
 ### mobile layout (dark theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/229726542-34568f0e-b58b-4b03-b113-c3f4ad04e746.png" height="600"/>
+<img src="" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
@@ -50,9 +50,10 @@ This product uses the following things:
   In the first version, I built basic functions of Simple Memo, such as CRUD Operations. Also, it does not connect to any Databases and instead, I used the localStorage.
 
 - **version1.1, released on 2023/04/04**  
-  In the version 1.1, I improve whole of the application UI, but specifically, I work hard to review MemoItem's UI and make it better. Also, I introduce "dark-theme-mode", which will let your experience more exciting!
+  In the version 1.1, I improved whole of the application UI, but specifically, I worked hard to review MemoItem's UI and made it better. Also, I introduced "dark-theme-mode", which would let your experience more exciting!
 
-- **version1.2, released on 2023/04/00**
+- **version1.2, released on 2023/04/06**  
+  In the version1.2, I introduced Pinia, which is a store library for Vue and made the code clear. Also, I conducted code refactoring.
 
 ## License
 

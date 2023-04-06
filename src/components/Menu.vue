@@ -5,13 +5,13 @@ import MiniModal from "./partials/MiniModal.vue";
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { storeToRefs } from "pinia";
 
-const store = useUserInterfaceStore();
-const { isDark, isOpen } = storeToRefs(store);
+const uiStore = useUserInterfaceStore();
+const { isDark, isOpen } = storeToRefs(uiStore);
 </script>
 
 <template>
   <div class="overflow-hidden">
-    <MenuToggleButton @open-menu="store.openMenu" :isDark="isDark" />
-    <MiniModal v-show="isOpen" @on-click="store.changeTheme" :isDark="isDark" />
+    <MenuToggleButton @open-menu="uiStore.openMenu" :isDark="isDark" />
+    <MiniModal v-show="isOpen" @on-click="uiStore.changeTheme" :isDark="isDark" />
   </div>
 </template>

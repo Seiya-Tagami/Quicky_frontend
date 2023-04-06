@@ -3,9 +3,9 @@ const props = defineProps({
   btnColor: String,
 });
 
-const emits = defineEmits(["onClick"]);
+const emits = defineEmits(["on-click"]);
 const onClick = () => {
-  emits("onClick");
+  emits("on-click");
 };
 </script>
 

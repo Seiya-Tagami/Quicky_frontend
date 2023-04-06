@@ -28,7 +28,7 @@ const checkContent = () => {
 const addMemo = () => {
   checkContent();
   if (preventAdd.value) return;
-  memoStore.addMemo({ title: title.value, content: content.value });
+  memoStore.addFn({ title: title.value, content: content.value });
   title.value = "";
   content.value = "";
   registerModalIsShowed.value = false;

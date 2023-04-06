@@ -20,7 +20,7 @@ const props = defineProps({
 // functions
 const handleMemo = () => {
   if (!props.memo) return;
-  memoStore.handleMemo(props.memo.id);
+  memoStore.handleFn(props.memo.id);
   isDone.value = !isDone.value;
 };
 

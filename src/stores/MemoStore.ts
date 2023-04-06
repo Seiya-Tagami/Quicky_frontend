@@ -17,7 +17,7 @@ export const useMemoStore = defineStore("Memo", {
     }
   },
   actions: {
-    addMemo(data: AddingData) {
+    addFn(data: AddingData) {
       this.memos?.push({
         id: uuid.v1(),
         title: data.title,
@@ -27,7 +27,7 @@ export const useMemoStore = defineStore("Memo", {
         isDone: false,
       });
     },
-    deleteMemo() {
+    deleteFn() {
       const newMemos = this.memos?.filter((memo) => memo.isDone !== true);
 
       // validation
@@ -41,13 +41,13 @@ export const useMemoStore = defineStore("Memo", {
         this.memos = newMemos!;
       }
     },
-    updateMemo({ id, title, content }: UpdatingData) {
+    updateFn({ id, title, content }: UpdatingData) {
       const targetMemo = this.memos!.filter((memo) => memo.id === id)[0];
       targetMemo!.title = title;
       targetMemo!.content = content;
       targetMemo!.updatedAt = this.updatedAt;
     },
-    handleMemo(targetId: string) {
+    handleFn(targetId: string) {
       const targetMemo = this.memos?.filter((memo) => memo.id === targetId)[0];
       targetMemo!.isDone = !targetMemo!.isDone;
     }

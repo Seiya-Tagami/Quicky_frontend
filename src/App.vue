@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
-import { uuid } from "vue-uuid";
+import { watch, onMounted } from "vue";
 
 // components
 import Menu from "./components/Menu.vue";
@@ -18,7 +17,6 @@ const uiStore = useUserInterfaceStore();
 const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 const { memos, now } = storeToRefs(memoStore);
-
 
 const BODY = document.querySelector("body");
 onMounted(() => {
@@ -55,8 +53,8 @@ watch(isDark, (newVal) => {
       </h1>
       <p class="text-[18px] mt-2 text-gray-400" :class="isDark && `!text-gray-300`">Make your life better.</p>
       <div class="flex gap-2 mt-4">
-        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @click="uiStore.handleRegisterModal">Register a new memo</ActionButton>
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @click="memoStore.deleteMemo">Delete a completed memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="uiStore.handleRegisterModal">Register a new memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="memoStore.deleteFn">Delete a completed memo</ActionButton>
       </div>
       <RegisterModal v-if="registerModalIsShowed" />
     </div>
@@ -67,7 +65,11 @@ watch(isDark, (newVal) => {
         <MemoItem v-if="memos?.length" v-for="memo in memos" :memo="memo" :key="memo.title" />
         <div v-else class="mx-auto mt-6 flex gap-2 font-semibold" :class="isDark && `text-white`">
           <p class="md:text-3xl text-2xl italic">Let's register a new memo...</p>
-          <font-awesome-icon :icon="['fas', 'pen']" class="md:w-[40px] md:h-[40px] w-[30px] h-[30px] cursor-pointer select-none hover:-translate-y-1 duration-200" />
+          <font-awesome-icon
+            :icon="['fas', 'pen']"
+            class="md:w-[40px] md:h-[40px] w-[30px] h-[30px] cursor-pointer select-none hover:-translate-y-1 duration-200"
+            @click="uiStore.handleRegisterModal"
+          />
         </div>
       </div>
     </div>
