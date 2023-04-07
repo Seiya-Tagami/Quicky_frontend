@@ -13,6 +13,7 @@ const memoStore = useMemoStore();
 
 const title = ref<string>("");
 const content = ref<string>("");
+const link = ref<string>("");
 const preventAdd = ref<boolean>(false);
 
 // functions
@@ -28,9 +29,10 @@ const checkContent = () => {
 const addMemo = () => {
   checkContent();
   if (preventAdd.value) return;
-  memoStore.addFn({ title: title.value, content: content.value });
+  memoStore.addFn({ title: title.value, content: content.value, link: link.value });
   title.value = "";
   content.value = "";
+  link.value = "";
   registerModalIsShowed.value = false;
 };
 </script>
@@ -56,13 +58,12 @@ const addMemo = () => {
         <input type="text" class="p-2 flex-[1] rounded-r" :class="isDark && `bg-gray-800`" v-model="title" />
       </div>
       <div class="w-full mt-2 text-[16px]" :class="isDark && `text-gray-300`">
-        <textarea
-          id="js-body"
-          class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
-          :class="isDark && `bg-gray-800`"
-          v-model="content"
-          placeholder="content"
-        ></textarea>
+        <textarea class="w-full md:h-[200px] h-[260px] px-4 py-2 border border-gray-400 rounded" :class="isDark && `bg-gray-800`" v-model="content" placeholder="content">
+        </textarea>
+      </div>
+      <div class="flex items-center gap-2 mt-2 text-[16px] rounded" :class="isDark && `text-gray-300`">
+        <font-awesome-icon :icon="['fas', 'link']" />
+        <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleRegisterModal">Cancel</ActionButton>

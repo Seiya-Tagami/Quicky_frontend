@@ -14,12 +14,16 @@ const props = defineProps({
   id: String,
   title: String,
   content: String,
+  link: String,
 });
 
 const title = ref<string>(props.title!);
 const content = ref<string>(props.content!);
+const link = ref<string>(props.link!);
+const allowEditLink = ref<boolean>(false);
 const preventUpdate = ref<boolean>(false);
 
+console.log(link.value);
 // functions
 const emits = defineEmits(["on-click"]);
 const handleEditModal = () => {
@@ -28,7 +32,7 @@ const handleEditModal = () => {
 
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
-  const isSameContent = props.title !== title.value || props.content !== content.value;
+  const isSameContent = props.title !== title.value || props.content !== content.value || props.link !== link.value;
   if (isInputContent && isSameContent) {
     preventUpdate.value = false;
   } else {
@@ -39,7 +43,7 @@ const checkContent = () => {
 const updateMemo = () => {
   checkContent();
   if (preventUpdate.value) return;
-  memoStore.updateFn({ id: props.id!, title: title.value, content: content.value });
+  memoStore.updateFn({ id: props.id!, title: title.value, content: content.value, link: link.value });
   handleEditModal();
 };
 </script>
@@ -72,6 +76,25 @@ const updateMemo = () => {
           v-model="content"
           placeholder="content"
         ></textarea>
+      </div>
+      <div class="flex items-center gap-2" v-if="!allowEditLink">
+        <a :href="link" class="w-full flex items-center gap-2 border-[1px] border-gray-400 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden" :title="link">
+          <font-awesome-icon :icon="['fas', 'link']" />
+          {{ link }}
+        </a>
+        <font-awesome-icon
+          :icon="['fas', 'pen-to-square']"
+          class="w-5 h-5 cursor-pointer"
+          @click="
+            () => {
+              allowEditLink = !allowEditLink;
+            }
+          "
+        />
+      </div>
+      <div class="flex items-center gap-2 text-[16px] rounded" :class="isDark && `text-gray-300`" v-else>
+        <font-awesome-icon :icon="['fas', 'link']" />
+        <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
       <div class="mt-2 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>

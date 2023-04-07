@@ -48,12 +48,5 @@ const handleEditModal = () => {
     </div>
     <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleEditModal">Detail</button>
   </div>
-  <EditModal
-    v-if="editModalIsShowed"
-    :id="props.memo!.id"
-    :title="props.memo!.title"
-    :content="props.memo!.content"
-    :editModalIsShowed="editModalIsShowed"
-    @on-click="handleEditModal"
-  />
+  <EditModal v-if="editModalIsShowed" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" :link="props.memo!.link" @on-click="handleEditModal" />
 </template>
