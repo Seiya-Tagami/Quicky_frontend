@@ -56,15 +56,16 @@ const updateMemo = () => {
           <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
         </button>
       </div>
+      <!-- error message -->
       <div v-show="preventUpdate" class="mt-2 -mb-2 flex items-center gap-2 bg-yellow-100 p-2 rounded-md font-semibold text-yellow-600">
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to update, you should change the title or content.</span>
       </div>
-      <div class="mt-4 flex items-center border border-gray-400 rounded" :class="isDark && `text-gray-300`">
+      <div class="mt-4 flex items-center border border-gray-400 text-[16px] rounded" :class="isDark && `text-gray-300`">
         <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="isDark && `bg-gray-700`">title</span>
         <input type="text" class="p-2 flex-[1] rounded-r" :class="isDark && `bg-gray-800`" v-model="title" />
       </div>
-      <div class="w-full mt-2" :class="isDark && `text-gray-300`">
+      <div class="w-full mt-2 text-[16px]" :class="isDark && `text-gray-300`">
         <textarea
           class="w-full md:h-[200px] h-[300px] px-4 py-2 border border-gray-400 rounded"
           :class="isDark && `bg-gray-800`"
