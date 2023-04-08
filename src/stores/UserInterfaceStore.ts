@@ -11,7 +11,7 @@ export const useUserInterfaceStore = defineStore("UserInterface", {
       this.isDark = !this.isDark;
       document.querySelector("body")!.classList.toggle("bg-gray-800");
     },
-    openMenu() {
+    handleMenu() {
       this.isOpen = !this.isOpen;
     },
     handleRegisterModal() {
