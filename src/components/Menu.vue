@@ -2,9 +2,9 @@
 import MenuToggleButton from "./partials/MenuToggleButton.vue";
 import MiniModal from "./partials/MiniModal.vue";
 
+//pinia
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { storeToRefs } from "pinia";
-
 const uiStore = useUserInterfaceStore();
 const { isDark, isOpen } = storeToRefs(uiStore);
 </script>
