@@ -83,7 +83,12 @@ const updateMemo = () => {
         ></textarea>
       </div>
       <div class="flex items-center gap-2" v-if="props.link && !preventEditLink">
-        <a :href="link" class="w-full flex items-center gap-2 border-[1px] border-gray-400 bg-gray-700 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden" :title="link">
+        <a
+          :href="link"
+          class="w-full flex items-center gap-2 border-[1px] border-gray-400 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden"
+          :class="isDark && `bg-gray-700`"
+          :title="link"
+        >
           <font-awesome-icon :icon="['fas', 'link']" />
           {{ link }}
         </a>
