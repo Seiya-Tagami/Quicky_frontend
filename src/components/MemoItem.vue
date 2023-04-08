@@ -7,7 +7,7 @@ import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
 const uiStore = useUserInterfaceStore();
-const { isDark } = storeToRefs(uiStore);
+const { isDark, isOpen } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // props

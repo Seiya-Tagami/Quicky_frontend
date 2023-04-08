@@ -11,7 +11,7 @@ const { isDark, isOpen } = storeToRefs(uiStore);
 
 <template>
   <div class="overflow-hidden">
-    <MenuToggleButton @open-menu="uiStore.openMenu" :isDark="isDark" />
+    <MenuToggleButton @open-menu="uiStore.handleMenu" :isDark="isDark" />
     <MiniModal v-show="isOpen" @on-click="uiStore.changeTheme" :isDark="isDark" />
   </div>
 </template>
