@@ -17,7 +17,7 @@ const onClick = () => {
 
 <template>
   <div
-    class="w-[200px] text-cyan-900 bg-gray-200 border-2 border-cyan-900 rounded-lg fixed md:top-[66px] top-[50px] right-[16px]"
+    class="w-[200px] text-cyan-900 bg-gray-200 border-2 border-cyan-900 rounded-lg fixed right-[16px] animate-show-miniModal"
     :class="isDark && `!bg-gray-800 text-white border-cyan-600`"
   >
     <div class="w-full flex items-center justify-around px-3 py-3 border-cyan-900 border-b-[1px]" :class="props.isDark && `!border-cyan-600`">

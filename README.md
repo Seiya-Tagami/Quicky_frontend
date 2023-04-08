@@ -1,15 +1,16 @@
-# Simple Memo (ver1.2)
+# Simple Memo (ver1.3)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
 ## Preview
+
 ### pc layout (light theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/230277754-545249c9-bfd7-440d-9e40-f8084e0b7622.png"/>
+<img src="https://user-images.githubusercontent.com/107479598/230705353-f0628c69-3d7d-4d75-99a5-87b2722c01b3.png"/>
 
 ### mobile layout (dark theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/230278520-f92cc6ff-f46d-4298-8c25-04cb2ce52a5d.png" height="600"/>
+<img src="https://user-images.githubusercontent.com/107479598/230705440-f0949dac-fecc-488c-b91a-659f91da0df4.png" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
@@ -55,6 +56,9 @@ This product uses the following things:
 
 - **version1.2, released on 2023/04/06**  
   In the version1.2, I introduced Pinia, which is a store library for Vue and made the code clear. Also, I conducted code refactoring.
+
+- **version1.3, released on 2023/04/08**  
+  In the version1.3, I revised the UI and modified it. Also, I you can add favorite website URL to your memo!
 
 ## License
 

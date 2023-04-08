@@ -22,6 +22,7 @@ export const useMemoStore = defineStore("Memo", {
         id: uuid.v1(),
         title: data.title,
         content: data.content,
+        link: data.link,
         createdAt: this.createdAt,
         updatedAt: "",
         isDone: false,
@@ -41,10 +42,11 @@ export const useMemoStore = defineStore("Memo", {
         this.memos = newMemos!;
       }
     },
-    updateFn({ id, title, content }: UpdatingData) {
+    updateFn({ id, title, content, link }: UpdatingData) {
       const targetMemo = this.memos!.filter((memo) => memo.id === id)[0];
       targetMemo!.title = title;
       targetMemo!.content = content;
+      targetMemo!.link = link;
       targetMemo!.updatedAt = this.updatedAt;
     },
     handleFn(targetId: string) {
