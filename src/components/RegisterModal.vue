@@ -61,7 +61,7 @@ const addMemo = () => {
         <textarea class="w-full md:h-[200px] h-[260px] px-4 py-2 border border-gray-400 rounded" :class="isDark && `bg-gray-800`" v-model="content" placeholder="content">
         </textarea>
       </div>
-      <div class="flex items-center gap-2 mt-2 text-[16px] rounded" :class="isDark && `text-gray-300`">
+      <div class="flex items-center gap-2 mt-2 text-[16px]" :class="isDark && `text-gray-300`">
         <font-awesome-icon :icon="['fas', 'link']" />
         <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>

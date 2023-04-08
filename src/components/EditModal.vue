@@ -94,7 +94,7 @@ const updateMemo = () => {
         </a>
         <font-awesome-icon :icon="['fas', 'pen-to-square']" class="w-5 h-5 cursor-pointer" @click="allowEditLink" />
       </div>
-      <div class="flex items-center gap-2 text-[16px] rounded" :class="isDark && `text-gray-300`" v-else>
+      <div class="flex items-center gap-2 text-[16px]" :class="isDark && `text-gray-300`" v-else>
         <font-awesome-icon :icon="['fas', 'link']" />
         <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>

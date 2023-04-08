@@ -49,7 +49,7 @@ watch(isDark, (newVal) => {
     <Menu />
     <div>
       <h1 class="text-4xl font-extrabold text-cyan-900" :class="isDark && `!text-cyan-600`">
-        Simple Memo <span class="text-3xl">{{ now.getFullYear() }}</span>
+        Simple Memo <span class="text-xl italic">{{ now.getFullYear() }}</span>
       </h1>
       <p class="text-[18px] mt-2 text-gray-400" :class="isDark && `!text-gray-300`">Make your life better.</p>
       <div class="flex gap-2 mt-4">
