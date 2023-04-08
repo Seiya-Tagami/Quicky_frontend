@@ -10,15 +10,15 @@ const uiStore = useUserInterfaceStore();
 const { isDark } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
-const isDone = ref<boolean>(false);
-const editModalIsShowed = ref<boolean>(false);
-
 // props
 const props = defineProps({
   memo: Object,
 });
 
 // functions
+const isDone = ref<boolean>(false);
+const editModalIsShowed = ref<boolean>(false);
+
 const handleMemo = () => {
   if (!props.memo) return;
   memoStore.handleFn(props.memo.id);

@@ -11,12 +11,12 @@ const uiStore = useUserInterfaceStore();
 const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
+// functions
 const title = ref<string>("");
 const content = ref<string>("");
 const link = ref<string>("");
 const preventAdd = ref<boolean>(false);
 
-// functions
 const checkContent = () => {
   const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
   if (isInputContent) {

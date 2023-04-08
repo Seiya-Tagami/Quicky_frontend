@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 import ActionButton from "./partials/ActionButton.vue";
+
+//pinia
 import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
 import { useMemoStore } from "../stores/MemoStore";
 import { storeToRefs } from "pinia";
@@ -17,17 +18,20 @@ const props = defineProps({
   link: String,
 });
 
+// functions
 const title = ref<string>(props.title!);
 const content = ref<string>(props.content!);
 const link = ref<string>(props.link!);
-const allowEditLink = ref<boolean>(false);
+const preventEditLink = ref<boolean>(false);
 const preventUpdate = ref<boolean>(false);
 
-console.log(link.value);
-// functions
 const emits = defineEmits(["on-click"]);
 const handleEditModal = () => {
   emits("on-click");
+};
+
+const allowEditLink = () => {
+  preventEditLink.value = !preventEditLink.value;
 };
 
 const checkContent = () => {
@@ -65,6 +69,7 @@ const updateMemo = () => {
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to update, you should change the title or content.</span>
       </div>
+      <!-- error message -->
       <div class="mt-4 flex items-center border border-gray-400 text-[16px] rounded" :class="isDark && `text-gray-300`">
         <span class="px-4 py-2 bg-gray-200 font-bold rounded-l" :class="isDark && `bg-gray-700`">title</span>
         <input type="text" class="p-2 flex-[1] rounded-r" :class="isDark && `bg-gray-800`" v-model="title" />
@@ -77,20 +82,12 @@ const updateMemo = () => {
           placeholder="content"
         ></textarea>
       </div>
-      <div class="flex items-center gap-2" v-if="!allowEditLink">
-        <a :href="link" class="w-full flex items-center gap-2 border-[1px] border-gray-400 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden" :title="link">
+      <div class="flex items-center gap-2" v-if="props.link && !preventEditLink">
+        <a :href="link" class="w-full flex items-center gap-2 border-[1px] border-gray-400 bg-gray-700 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden" :title="link">
           <font-awesome-icon :icon="['fas', 'link']" />
           {{ link }}
         </a>
-        <font-awesome-icon
-          :icon="['fas', 'pen-to-square']"
-          class="w-5 h-5 cursor-pointer"
-          @click="
-            () => {
-              allowEditLink = !allowEditLink;
-            }
-          "
-        />
+        <font-awesome-icon :icon="['fas', 'pen-to-square']" class="w-5 h-5 cursor-pointer" @click="allowEditLink" />
       </div>
       <div class="flex items-center gap-2 text-[16px] rounded" :class="isDark && `text-gray-300`" v-else>
         <font-awesome-icon :icon="['fas', 'link']" />
