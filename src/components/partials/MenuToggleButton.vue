@@ -16,11 +16,11 @@ const onClick = () => {
 </script>
 
 <template>
-  <div class="w-[210px] h-[210px] bg-cyan-900 fixed md:-top-[110px] md:-right-[110px] -top-[115px] -right-[115px] rotate-45 rounded-full" :class="props.isDark && `!bg-cyan-600`">
-    <div class="w-full h-full relative">
-      <button class="left-1/2 -translate-x-1/2 bottom-[25px] absolute" @click="onClick">
-        <font-awesome-icon v-if="isOpen" :icon="['fas', 'xmark']" class="text-3xl text-white -rotate-45" />
-        <font-awesome-icon v-else :icon="['fas', 'ellipsis']" class="text-3xl text-white -rotate-45" />
+  <div class="w-[100px] h-[100px] rounded-bl-full bg-cyan-900 fixed top-0 right-0" :class="props.isDark && `!bg-cyan-600`">
+    <div class="relative">
+      <button class="absolute top-7 right-7" @click="onClick">
+        <font-awesome-icon v-if="isOpen" :icon="['fas', 'xmark']" class="text-3xl text-white" />
+        <font-awesome-icon v-else :icon="['fas', 'ellipsis']" class="text-3xl text-white" />
       </button>
     </div>
   </div>
