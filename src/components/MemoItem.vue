@@ -27,6 +27,7 @@ const handleMemo = () => {
 
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
+  isOpen.value = false;
 };
 </script>
 
