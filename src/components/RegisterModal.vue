@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 
-import ActionButton from "./partials/ActionButton.vue";
+import ActionButton from './partials/ActionButton.vue';
 
 // pinia
-import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
-import { useMemoStore } from "../stores/MemoStore";
-import { storeToRefs } from "pinia";
+import { useUserInterfaceStore } from '../stores/UserInterfaceStore';
+import { useMemoStore } from '../stores/MemoStore';
+import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
 const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // functions
-const title = ref<string>("");
-const content = ref<string>("");
-const link = ref<string>("");
+const title = ref<string>('');
+const content = ref<string>('');
+const link = ref<string>('');
 const preventAdd = ref<boolean>(false);
 
 const checkContent = () => {
-  const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
+  const isInputContent = title.value.trim() !== '' && content.value.trim() !== '';
   if (isInputContent) {
     preventAdd.value = false;
   } else {
@@ -30,9 +30,9 @@ const addMemo = () => {
   checkContent();
   if (preventAdd.value) return;
   memoStore.addFn({ title: title.value, content: content.value, link: link.value });
-  title.value = "";
-  content.value = "";
-  link.value = "";
+  title.value = '';
+  content.value = '';
+  link.value = '';
   registerModalIsShowed.value = false;
 };
 </script>
