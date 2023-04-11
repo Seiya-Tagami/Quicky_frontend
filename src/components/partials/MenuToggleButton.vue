@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+// pinia
+import { useUserInterfaceStore } from "../../stores/UserInterfaceStore";
+import { storeToRefs } from "pinia";
+const uiStore = useUserInterfaceStore();
+const { isOpen } = storeToRefs(uiStore);
 
 // props
 const props = defineProps({
@@ -7,11 +11,9 @@ const props = defineProps({
 });
 
 // functions
-const isOpen = ref<boolean>(false);
 const emits = defineEmits(["open-menu"]);
 const onClick = () => {
   emits("open-menu");
-  isOpen.value = !isOpen.value;
 };
 </script>
 

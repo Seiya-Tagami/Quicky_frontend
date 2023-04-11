@@ -16,6 +16,7 @@ export const useUserInterfaceStore = defineStore("UserInterface", {
     },
     handleRegisterModal() {
       this.registerModalIsShowed = !this.registerModalIsShowed;
+      this.isOpen = false
     },
   },
 });
