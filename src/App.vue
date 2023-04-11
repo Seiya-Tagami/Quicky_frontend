@@ -42,6 +42,11 @@ watch(
 watch(isDark, (newVal) => {
   localStorage.setItem('isDark', JSON.stringify(newVal));
 });
+
+watch(registerModalIsShowed, (newVal) => {
+  window.scroll({ top: 0, behavior: 'smooth' });
+  BODY!.classList.toggle('prevent-scroll');
+});
 </script>
 
 <template>
@@ -74,7 +79,7 @@ watch(isDark, (newVal) => {
       </div>
     </div>
   </main>
-  <footer class="w-full h-[60px] text-center text-[18px]" :class="isDark && `text-white`">
+  <footer class="w-full h-[60px] text-center text-[18px] mt-4" :class="isDark && `text-white`">
     <small class="leading-[60px]">&copy; {{ now.getFullYear() }} SeiyaCode</small>
   </footer>
 </template>
