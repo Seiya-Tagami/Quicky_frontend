@@ -5,18 +5,20 @@ export const useUserInterfaceStore = defineStore("UserInterface", {
     isDark: false,
     isOpen: false,
     registerModalIsShowed: false,
+    body: document.querySelector('body')
   }),
   actions: {
     changeTheme() {
       this.isDark = !this.isDark;
-      document.querySelector("body")!.classList.toggle("bg-gray-800");
+      this.body!.classList.toggle("bg-gray-800");
     },
     handleMenu() {
       this.isOpen = !this.isOpen;
     },
     handleRegisterModal() {
       this.registerModalIsShowed = !this.registerModalIsShowed;
-      this.isOpen = false
+      this.isOpen = false;
+      this.body!.classList.toggle('prevent-scroll');
     },
   },
 });
