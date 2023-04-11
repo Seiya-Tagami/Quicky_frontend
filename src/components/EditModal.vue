@@ -54,16 +54,11 @@ const updateMemo = () => {
 
 <template>
   <div
-    class="max-w-[600px] md:w-full w-[95%] border rounded-md p-6 absolute top-0 left-1/2 z-20 animate-slide-bottom"
+    class="max-w-[600px] md:w-full w-[85%] h-screen border rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
     :class="isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
   >
     <div>
-      <div class="flex justify-between items-center">
-        <h2 class="font-bold text-2xl">Detail</h2>
-        <button @click="handleEditModal">
-          <font-awesome-icon :icon="['fas', 'xmark']" class="w-7 h-7 cursor-pointer" />
-        </button>
-      </div>
+      <h2 class="font-bold text-2xl">Detail</h2>
       <!-- error message -->
       <div v-show="preventUpdate" class="mt-2 -mb-2 flex items-center gap-2 bg-yellow-100 p-2 rounded-md font-semibold text-yellow-600">
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
@@ -98,11 +93,11 @@ const updateMemo = () => {
         <font-awesome-icon :icon="['fas', 'link']" />
         <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
-      <div class="mt-2 ml-auto flex gap-2 w-fit">
+      <div class="mt-4 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="updateMemo">Update</ActionButton>
       </div>
     </div>
   </div>
-  <div class="w-screen fixed top-0 left-0 right-0 bottom-0 z-10 bg-[#07070750]" />
+  <div class="w-screen fixed top-0 left-0 right-0 bottom-0 z-10 bg-[#07070750]" @click="handleEditModal" />
 </template>
