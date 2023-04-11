@@ -14,11 +14,10 @@ import { useUserInterfaceStore } from './stores/UserInterfaceStore';
 import { useMemoStore } from './stores/MemoStore';
 import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
-const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
+const { isDark, registerModalIsShowed, body } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 const { memos, now } = storeToRefs(memoStore);
 
-const BODY = document.querySelector('body');
 onMounted(() => {
   memos.value = JSON.parse(localStorage.getItem('memos')!) || [];
   isDark.value = JSON.parse(localStorage.getItem('isDark')!) || false;
@@ -27,10 +26,11 @@ onMounted(() => {
   else document.body.classList.remove('bg-gray-800');
 
   setTimeout(() => {
-    BODY!.classList.add('force-duration');
+    body.value!.classList.add('force-duration');
   }, 100);
 });
 
+// watcher
 watch(
   memos,
   (newVal) => {

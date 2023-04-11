@@ -35,21 +35,11 @@ const addMemo = () => {
   link.value = '';
   registerModalIsShowed.value = false;
 };
-
-// watcher
-const BODY = document.querySelector('body');
-watch(
-  () => registerModalIsShowed,
-  (newVal) => {
-    console.log(newVal);
-  },
-  { deep: true }
-);
 </script>
 
 <template>
   <div
-    class="max-w-[600px] md:w-full w-[85%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
+    class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
     :class="isDark ? `bg-gray-800 text-cyan-500 ` : `bg-white text-cyan-900`"
   >
     <div>
@@ -70,7 +60,7 @@ watch(
         <font-awesome-icon :icon="['fas', 'link']" />
         <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
-      <div class="mt-4 ml-auto flex gap-2 w-fit">
+      <div class="mt-6 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleRegisterModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="addMemo">Register</ActionButton>
       </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // pinia
-import { useUserInterfaceStore } from "../../stores/UserInterfaceStore";
-import { storeToRefs } from "pinia";
+import { useUserInterfaceStore } from '../../stores/UserInterfaceStore';
+import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
 const { isOpen } = storeToRefs(uiStore);
 
@@ -11,9 +11,9 @@ const props = defineProps({
 });
 
 // functions
-const emits = defineEmits(["open-menu"]);
+const emits = defineEmits(['open-menu']);
 const onClick = () => {
-  emits("open-menu");
+  emits('open-menu');
 };
 </script>
 

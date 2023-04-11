@@ -7,7 +7,7 @@ import { useUserInterfaceStore } from '../stores/UserInterfaceStore';
 import { useMemoStore } from '../stores/MemoStore';
 import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
-const { isDark, isOpen } = storeToRefs(uiStore);
+const { isDark, isOpen, body } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // props
@@ -18,7 +18,6 @@ const props = defineProps({
 // functions
 const isDone = ref<boolean>(false);
 const editModalIsShowed = ref<boolean>(false);
-const BODY = document.querySelector('body');
 
 const handleMemo = () => {
   if (!props.memo) return;
@@ -29,7 +28,7 @@ const handleMemo = () => {
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
   isOpen.value = false;
-  BODY!.classList.toggle('prevent-scroll');
+  body.value!.classList.toggle('prevent-scroll');
 };
 </script>
 
