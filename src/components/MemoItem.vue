@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import EditModal from './EditModal.vue';
 
 // pinia
@@ -18,6 +18,7 @@ const props = defineProps({
 // functions
 const isDone = ref<boolean>(false);
 const editModalIsShowed = ref<boolean>(false);
+const BODY = document.querySelector('body');
 
 const handleMemo = () => {
   if (!props.memo) return;
@@ -28,13 +29,8 @@ const handleMemo = () => {
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
   isOpen.value = false;
-};
-
-const BODY = document.querySelector('body');
-watch(editModalIsShowed, (newVal) => {
-  window.scroll({ top: 0, behavior: 'smooth' });
   BODY!.classList.toggle('prevent-scroll');
-});
+};
 </script>
 
 <template>

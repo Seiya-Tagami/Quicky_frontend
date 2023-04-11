@@ -42,11 +42,6 @@ watch(
 watch(isDark, (newVal) => {
   localStorage.setItem('isDark', JSON.stringify(newVal));
 });
-
-watch(registerModalIsShowed, (newVal) => {
-  window.scroll({ top: 0, behavior: 'smooth' });
-  BODY!.classList.toggle('prevent-scroll');
-});
 </script>
 
 <template>
