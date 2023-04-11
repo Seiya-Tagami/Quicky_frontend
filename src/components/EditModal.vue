@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import ActionButton from "./partials/ActionButton.vue";
+import { ref } from 'vue';
+import ActionButton from './partials/ActionButton.vue';
 
 //pinia
-import { useUserInterfaceStore } from "../stores/UserInterfaceStore";
-import { useMemoStore } from "../stores/MemoStore";
-import { storeToRefs } from "pinia";
+import { useUserInterfaceStore } from '../stores/UserInterfaceStore';
+import { useMemoStore } from '../stores/MemoStore';
+import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
 const { isDark } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
@@ -25,9 +25,9 @@ const link = ref<string>(props.link!);
 const preventEditLink = ref<boolean>(false);
 const preventUpdate = ref<boolean>(false);
 
-const emits = defineEmits(["on-click"]);
+const emits = defineEmits(['on-click']);
 const handleEditModal = () => {
-  emits("on-click");
+  emits('on-click');
 };
 
 const allowEditLink = () => {
@@ -35,7 +35,7 @@ const allowEditLink = () => {
 };
 
 const checkContent = () => {
-  const isInputContent = title.value.trim() !== "" && content.value.trim() !== "";
+  const isInputContent = title.value.trim() !== '' && content.value.trim() !== '';
   const isSameContent = props.title !== title.value || props.content !== content.value || props.link !== link.value;
   if (isInputContent && isSameContent) {
     preventUpdate.value = false;
