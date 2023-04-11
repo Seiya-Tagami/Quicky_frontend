@@ -47,7 +47,7 @@ watch(isDark, (newVal) => {
 <template>
   <main class="max-w-[1200px] mx-auto pt-[60px] px-4">
     <Menu />
-    <div>
+    <div class="">
       <h1 class="text-4xl font-extrabold text-cyan-900" :class="isDark && `!text-cyan-600`">
         Simple Memo <span class="text-xl italic">{{ now.getFullYear() }}</span>
       </h1>
