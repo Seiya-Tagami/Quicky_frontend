@@ -13,7 +13,7 @@ module.exports = {
             transform: 'translateX(-50%) translateY(0)',
           },
           to: {
-            transform: 'translateX(-50%) translateY(70px)',
+            transform: 'translateX(-50%) translateY(100px)',
           },
         },
         'show-miniModal': {
