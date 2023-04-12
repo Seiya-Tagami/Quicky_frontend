@@ -1,4 +1,4 @@
-# Simple Memo (ver1.3)
+# Simple Memo (ver1.4)
 
 You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
