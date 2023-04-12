@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // pinia
-import { useUserInterfaceStore } from "../../stores/UserInterfaceStore";
-import { storeToRefs } from "pinia";
+import { useUserInterfaceStore } from '../../stores/UserInterfaceStore';
+import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
 const { isOpen } = storeToRefs(uiStore);
 
@@ -11,14 +11,14 @@ const props = defineProps({
 });
 
 // functions
-const emits = defineEmits(["open-menu"]);
+const emits = defineEmits(['open-menu']);
 const onClick = () => {
-  emits("open-menu");
+  emits('open-menu');
 };
 </script>
 
 <template>
-  <div class="w-[100px] h-[100px] rounded-bl-full bg-cyan-900 fixed top-0 right-0" :class="props.isDark && `!bg-cyan-600`">
+  <div class="w-[100px] h-[100px] rounded-bl-full bg-cyan-900 absolute top-0 right-0 select-none" :class="props.isDark && `!bg-cyan-600`">
     <div class="relative">
       <button class="absolute top-7 right-7" @click="onClick">
         <font-awesome-icon v-if="isOpen" :icon="['fas', 'xmark']" class="text-3xl text-white" />

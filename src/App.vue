@@ -14,11 +14,10 @@ import { useUserInterfaceStore } from './stores/UserInterfaceStore';
 import { useMemoStore } from './stores/MemoStore';
 import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
-const { isDark, registerModalIsShowed } = storeToRefs(uiStore);
+const { isDark, registerModalIsShowed, body } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 const { memos, now } = storeToRefs(memoStore);
 
-const BODY = document.querySelector('body');
 onMounted(() => {
   memos.value = JSON.parse(localStorage.getItem('memos')!) || [];
   isDark.value = JSON.parse(localStorage.getItem('isDark')!) || false;
@@ -27,10 +26,11 @@ onMounted(() => {
   else document.body.classList.remove('bg-gray-800');
 
   setTimeout(() => {
-    BODY!.classList.add('force-duration');
+    body.value!.classList.add('force-duration');
   }, 100);
 });
 
+// watcher
 watch(
   memos,
   (newVal) => {
@@ -47,7 +47,7 @@ watch(isDark, (newVal) => {
 <template>
   <main class="max-w-[1200px] mx-auto pt-[60px] px-4">
     <Menu />
-    <div>
+    <div class="">
       <h1 class="text-4xl font-extrabold text-cyan-900" :class="isDark && `!text-cyan-600`">
         Simple Memo <span class="text-xl italic">{{ now.getFullYear() }}</span>
       </h1>
