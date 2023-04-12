@@ -60,6 +60,9 @@ This product uses the following things:
 - **version1.3, released on 2023/04/08**  
   In the version1.3, I revised the UI and modified it. Also, I you can add favorite website URL to your memo!
 
+- **version1.4, released on 2023/04/00**
+  In the version1.4, again, I revised the whole of the UI and fix some parts. Also, I remade UI which functions as "create" and "update".
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

@@ -35,22 +35,12 @@ const addMemo = () => {
   link.value = '';
   registerModalIsShowed.value = false;
 };
-
-// watcher
-const BODY = document.querySelector('body');
-watch(
-  () => registerModalIsShowed,
-  (newVal) => {
-    console.log(newVal);
-  },
-  { deep: true }
-);
 </script>
 
 <template>
   <div
-    class="max-w-[600px] md:w-full w-[85%] h-screen border rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
-    :class="isDark ? `bg-gray-800 text-cyan-500 border-cyan-500` : `bg-white text-cyan-900`"
+    class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
+    :class="isDark ? `bg-gray-800 text-cyan-500 ` : `bg-white text-cyan-900`"
   >
     <div>
       <h2 class="font-bold text-2xl">New memo</h2>
@@ -70,11 +60,11 @@ watch(
         <font-awesome-icon :icon="['fas', 'link']" />
         <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
-      <div class="mt-4 ml-auto flex gap-2 w-fit">
+      <div class="mt-6 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="uiStore.handleRegisterModal">Cancel</ActionButton>
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="addMemo">Register</ActionButton>
       </div>
     </div>
   </div>
-  <div class="w-screen fixed top-0 left-0 right-0 bottom-0 z-10 bg-[#07070750]" @click="uiStore.handleRegisterModal" />
+  <div class="w-screen fixed top-0 left-0 right-0 bottom-0 z-10 bg-[#07070750]" :class="isDark && `bg-[#70707050]`" @click="uiStore.handleRegisterModal" />
 </template>

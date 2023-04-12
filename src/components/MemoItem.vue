@@ -7,7 +7,7 @@ import { useUserInterfaceStore } from '../stores/UserInterfaceStore';
 import { useMemoStore } from '../stores/MemoStore';
 import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
-const { isDark, isOpen } = storeToRefs(uiStore);
+const { isDark, isOpen, body } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // props
@@ -18,7 +18,6 @@ const props = defineProps({
 // functions
 const isDone = ref<boolean>(false);
 const editModalIsShowed = ref<boolean>(false);
-const BODY = document.querySelector('body');
 
 const handleMemo = () => {
   if (!props.memo) return;
@@ -29,7 +28,7 @@ const handleMemo = () => {
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
   isOpen.value = false;
-  BODY!.classList.toggle('prevent-scroll');
+  // body.value!.classList.toggle('prevent-scroll');
 };
 </script>
 
@@ -49,7 +48,7 @@ const handleEditModal = () => {
         <span class="font-semibold">{{ props.memo?.updatedAt !== '' ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
       </div>
     </div>
-    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleEditModal">Detail</button>
+    <button class="md:p-3 p-2 font-semibold rounded w-fit text-white select-none" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleEditModal">Detail</button>
   </div>
   <EditModal v-if="editModalIsShowed" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" :link="props.memo!.link" @on-click="handleEditModal" />
 </template>
