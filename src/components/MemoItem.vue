@@ -28,7 +28,7 @@ const handleMemo = () => {
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
   isOpen.value = false;
-  body.value!.classList.toggle('prevent-scroll');
+  // body.value!.classList.toggle('prevent-scroll');
 };
 </script>
 
