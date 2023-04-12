@@ -74,7 +74,7 @@ watch(isDark, (newVal) => {
       </div>
     </div>
   </main>
-  <footer class="w-full h-[60px] text-center text-[18px] mt-4" :class="isDark && `text-white`">
+  <footer class="w-full h-[60px] text-center text-[18px] mt-16 text-white" :class="isDark ? `bg-cyan-600` : `bg-cyan-800`">
     <small class="leading-[60px]">&copy; {{ now.getFullYear() }} SeiyaCode</small>
   </footer>
 </template>
