@@ -1,6 +1,6 @@
 # Simple Memo (ver1.4)
 
-You can check out the app on [github pages](https://seiya-tagami.github.io/Simple-Memo/)!
+You can check out the app on [my github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
 ## Preview
 
@@ -60,7 +60,7 @@ This product uses the following things:
 - **version1.3, released on 2023/04/08**  
   In the version1.3, I revised the UI and modified it. Also, I you can add favorite website URL to your memo!
 
-- **version1.4, released on 2023/04/00**
+- **version1.4, released on 2023/04/11**  
   In the version1.4, again, I revised the whole of the UI and fix some parts. Also, I remade UI which functions as "create" and "update".
 
 ## License
