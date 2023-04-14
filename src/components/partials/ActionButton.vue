@@ -10,5 +10,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <button class="w-fit text-white px-5 py-3 md:p-3 text-[16px] font-semibold rounded select-none" :class="props.btnColor" @click="onClick"><slot></slot></button>
+  <button class="w-fit flex items-center gap-3 text-white px-5 py-3 md:p-3 text-[16px] font-semibold rounded select-none" :class="props.btnColor" @click="onClick">
+    <slot></slot>
+  </button>
 </template>

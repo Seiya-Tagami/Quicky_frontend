@@ -53,10 +53,16 @@ watch(isDark, (newVal) => {
       </h1>
       <p class="text-[18px] mt-2 text-gray-400" :class="isDark && `!text-gray-300`">Make your life better.</p>
       <div class="flex gap-2 mt-4">
-        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="uiStore.handleRegisterModal">Register a new memo</ActionButton>
-        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="memoStore.deleteFn">Delete a completed memo</ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="uiStore.handleRegisterModal">
+          New Memo
+          <font-awesome-icon :icon="['far', 'pen-to-square']" />
+        </ActionButton>
+        <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="memoStore.deleteFn">
+          Delete Completed Memos
+          <font-awesome-icon :icon="['fas', 'eraser']" />
+        </ActionButton>
       </div>
-      <RegisterModal v-if="registerModalIsShowed" />
+      <RegisterModal v-if="registerModalIsShowed" class="text-xl" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
       <h3 class="p-2 text-2xl font-semibold text-cyan-900" :class="isDark && `!text-cyan-600`">Memos</h3>
