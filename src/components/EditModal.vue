@@ -15,12 +15,14 @@ const props = defineProps({
   id: String,
   title: String,
   content: String,
+  category: String,
   link: String,
 });
 
 // functions
 const title = ref<string>(props.title!);
 const content = ref<string>(props.content!);
+const category = ref<string>(props.category!);
 const link = ref<string>(props.link!);
 const preventEditLink = ref<boolean>(false);
 const preventUpdate = ref<boolean>(false);
@@ -36,8 +38,8 @@ const allowEditLink = () => {
 
 const checkContent = () => {
   const isInputContent = title.value.trim() !== '' && content.value.trim() !== '';
-  const isSameContent = props.title !== title.value || props.content !== content.value || props.link !== link.value;
-  if (isInputContent && isSameContent) {
+  // const isSameContent = props.title !== title.value || props.content !== content.value || props.category !== category.value || props.link !== link.value;
+  if (isInputContent) {
     preventUpdate.value = false;
   } else {
     preventUpdate.value = true;
@@ -47,22 +49,19 @@ const checkContent = () => {
 const updateMemo = () => {
   checkContent();
   if (preventUpdate.value) return;
-  memoStore.updateFn({ id: props.id!, title: title.value, content: content.value, link: link.value });
+  memoStore.updateFn({ id: props.id!, title: title.value, content: content.value, category: category.value, link: link.value });
   handleEditModal();
 };
 </script>
 
 <template>
-  <div
-    class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
-    :class="isDark ? `bg-gray-800 text-cyan-500` : `bg-white text-cyan-900`"
-  >
+  <div class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in" :class="isDark ? `bg-gray-800` : `bg-white `">
     <div>
-      <h2 class="font-bold text-2xl">Detail</h2>
+      <h2 class="font-bold text-2xl" :class="isDark ? `text-cyan-500` : `text-cyan-900`">Detail</h2>
       <!-- error message -->
       <div v-show="preventUpdate" class="mt-2 -mb-2 flex items-center gap-2 bg-yellow-100 p-2 rounded-md font-semibold text-yellow-600">
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
-        <span>Error! In order to update, you should change the title or content.</span>
+        <span>Error! In order to update, you should type the title or content.</span>
       </div>
       <!-- error message -->
       <div class="mt-4 flex items-center border border-gray-400 text-[16px] rounded" :class="isDark && `text-gray-300`">
@@ -76,6 +75,15 @@ const updateMemo = () => {
           v-model="content"
           placeholder="content"
         ></textarea>
+      </div>
+      <div class="mt-2 flex items-center gap-3">
+        <span class="font-semibold" :class="isDark ? `text-white` : `text-dark`">Category</span>
+        <select name="category" id="" class="p-2 bg-gray-200 text-[16px] font-semibold rounded" v-model="category">
+          <option value="study" selected>study</option>
+          <option value="hobby">hobby</option>
+          <option value="work">work</option>
+          <option value="others">others</option>
+        </select>
       </div>
       <div class="flex items-center gap-2" v-if="props.link && !preventEditLink">
         <a

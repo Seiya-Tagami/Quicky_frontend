@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import EditModal from './EditModal.vue';
 
 // pinia
@@ -7,7 +7,7 @@ import { useUserInterfaceStore } from '../stores/UserInterfaceStore';
 import { useMemoStore } from '../stores/MemoStore';
 import { storeToRefs } from 'pinia';
 const uiStore = useUserInterfaceStore();
-const { isDark, isOpen, body } = storeToRefs(uiStore);
+const { isDark, isOpen } = storeToRefs(uiStore);
 const memoStore = useMemoStore();
 
 // props
@@ -28,7 +28,6 @@ const handleMemo = () => {
 const handleEditModal = () => {
   editModalIsShowed.value = !editModalIsShowed.value;
   isOpen.value = false;
-  // body.value!.classList.toggle('prevent-scroll');
 };
 </script>
 
@@ -46,9 +45,30 @@ const handleEditModal = () => {
       <div class="flex gap-2 duration-300" :class="[isDark ? `text-violet-300` : `text-gray-500`,props.memo!.isDone && `${isDark ? `!text-gray-400` : `!text-gray-300`}`]">
         <span>{{ props.memo?.updatedAt !== '' ? 'updated at' : 'created at' }}</span>
         <span class="font-semibold">{{ props.memo?.updatedAt !== '' ? props.memo?.updatedAt : props.memo?.createdAt }}</span>
+        <span
+          class="px-2 ml-6 text-black font-semibold rounded-xl"
+          :class="
+            props.memo?.category === 'study'
+              ? 'bg-green-200'
+              : props.memo?.category === 'hobby'
+              ? 'bg-purple-200'
+              : props.memo?.category === 'work'
+              ? 'bg-blue-200'
+              : 'bg-yellow-200'
+          "
+          >{{ props.memo?.category && props.memo.category }}</span
+        >
       </div>
     </div>
     <button class="md:p-3 p-2 font-semibold rounded w-fit text-white select-none" :class="isDark ? `bg-blue-400` : `bg-blue-900`" @click="handleEditModal">Detail</button>
   </div>
-  <EditModal v-if="editModalIsShowed" :id="props.memo!.id" :title="props.memo!.title" :content="props.memo!.content" :link="props.memo!.link" @on-click="handleEditModal" />
+  <EditModal
+    v-if="editModalIsShowed"
+    :id="props.memo!.id"
+    :title="props.memo!.title"
+    :content="props.memo!.content"
+    :category="props.memo!.category"
+    :link="props.memo!.link"
+    @on-click="handleEditModal"
+  />
 </template>

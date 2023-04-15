@@ -58,11 +58,11 @@ watch(isDark, (newVal) => {
           <font-awesome-icon :icon="['far', 'pen-to-square']" />
         </ActionButton>
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="memoStore.deleteFn">
-          Delete Completed Memos
+          Delete Memo
           <font-awesome-icon :icon="['fas', 'eraser']" />
         </ActionButton>
       </div>
-      <RegisterModal v-if="registerModalIsShowed" class="text-xl" />
+      <RegisterModal v-if="registerModalIsShowed" />
     </div>
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
       <h3 class="p-2 text-2xl font-semibold text-cyan-900" :class="isDark && `!text-cyan-600`">Memos</h3>

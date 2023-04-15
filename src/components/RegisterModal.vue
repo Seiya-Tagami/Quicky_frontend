@@ -14,6 +14,7 @@ const memoStore = useMemoStore();
 // functions
 const title = ref<string>('');
 const content = ref<string>('');
+const category = ref<string>('study');
 const link = ref<string>('');
 const preventAdd = ref<boolean>(false);
 
@@ -29,21 +30,23 @@ const checkContent = () => {
 const addMemo = () => {
   checkContent();
   if (preventAdd.value) return;
-  memoStore.addFn({ title: title.value, content: content.value, link: link.value });
+  memoStore.addFn({ title: title.value, content: content.value, category: category.value, link: link.value });
   title.value = '';
   content.value = '';
+  category.value = '';
   link.value = '';
   registerModalIsShowed.value = false;
 };
+
+watch(category, (newVal) => {
+  console.log(newVal);
+});
 </script>
 
 <template>
-  <div
-    class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in"
-    :class="isDark ? `bg-gray-800 text-cyan-500 ` : `bg-white text-cyan-900`"
-  >
+  <div class="max-w-[600px] md:w-full w-[90%] h-screen rounded-l-md p-6 fixed top-0 right-0 z-20 animate-slide-in" :class="isDark ? `bg-gray-800 ` : `bg-white `">
     <div>
-      <h2 class="font-bold text-2xl">New memo</h2>
+      <h2 class="font-bold text-2xl" :class="isDark ? `text-cyan-500 ` : `text-cyan-900`">New memo</h2>
       <div v-show="preventAdd" class="mt-2 -mb-2 flex items-center gap-2 bg-yellow-100 p-2 rounded-md font-semibold text-yellow-600">
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
         <span>Error! In order to register, you should type the title and content.</span>
@@ -55,6 +58,15 @@ const addMemo = () => {
       <div class="w-full mt-2 text-[16px]" :class="isDark && `text-gray-300`">
         <textarea class="w-full md:h-[200px] h-[260px] px-4 py-2 border border-gray-400 rounded" :class="isDark && `bg-gray-800`" v-model="content" placeholder="content">
         </textarea>
+      </div>
+      <div class="mt-2 flex items-center gap-3">
+        <span class="font-semibold" :class="isDark ? `text-white` : `text-dark`">Category</span>
+        <select name="category" id="" class="p-2 bg-gray-200 text-[16px] rounded" v-model="category">
+          <option value="study" selected>study</option>
+          <option value="hobby">hobby</option>
+          <option value="hobby">work</option>
+          <option value="others">others</option>
+        </select>
       </div>
       <div class="flex items-center gap-2 mt-2 text-[16px]" :class="isDark && `text-gray-300`">
         <font-awesome-icon :icon="['fas', 'link']" />
