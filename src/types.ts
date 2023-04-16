@@ -2,6 +2,7 @@ export type Memo = {
   id: string;
   title: string;
   content: string;
+  category: string
   link: string;
   createdAt: string;
   updatedAt: string;
@@ -11,6 +12,7 @@ export type Memo = {
 export type AddingData = {
   title: string;
   content: string;
+  category: string;
   link: string;
 };
 
@@ -18,5 +20,6 @@ export type UpdatingData = {
   id: string;
   title: string;
   content: string;
+  category: string
   link: string
 } 
