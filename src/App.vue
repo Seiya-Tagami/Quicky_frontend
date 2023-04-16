@@ -47,7 +47,7 @@ onMounted(() => {
   init();
 });
 
-// watcher
+// watchers
 watch(
   memos,
   (newVal) => {
@@ -84,15 +84,14 @@ watch(isDark, (newVal) => {
           <font-awesome-icon :icon="['fas', 'eraser']" />
         </ActionButton>
       </div>
-      <RegisterModal v-if="registerModalIsShowed" />
     </div>
+    <RegisterModal v-if="registerModalIsShowed" />
     <div class="w-full mt-6 md:text-[16px] text-[14px]">
       <div class="flex justify-between items-center">
         <h3 class="p-2 text-2xl font-semibold text-cyan-900" :class="isDark && `!text-cyan-600`">Memos</h3>
         <select
           name="category"
-          id=""
-          class="p-1 border text-[16px] h-fit rounded cursor-pointer mr-1"
+          class="p-2 border text-[16px] h-fit rounded cursor-pointer mr-1"
           :class="isDark ? `text-cyan-600 border-cyan-600 bg-gray-800` : `text-cyan-900 border-cyan-900`"
           v-model="category"
         >
