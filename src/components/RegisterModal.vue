@@ -61,7 +61,13 @@ watch(category, (newVal) => {
       </div>
       <div class="mt-2 flex items-center gap-3">
         <span class="font-semibold" :class="isDark ? `text-white` : `text-dark`">Category</span>
-        <select name="category" id="" class="p-2 bg-gray-200 text-[16px] rounded" v-model="category">
+        <select
+          name="category"
+          id=""
+          class="p-2 border text-[16px] h-fit rounded cursor-pointer"
+          :class="isDark ? `text-cyan-600 border-cyan-600 bg-gray-800` : `text-cyan-900 border-cyan-900`"
+          v-model="category"
+        >
           <option value="study" selected>study</option>
           <option value="hobby">hobby</option>
           <option value="hobby">work</option>
