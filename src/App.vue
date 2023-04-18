@@ -25,6 +25,7 @@ const category = ref<string>('all');
 const init = () => {
   memos.value = JSON.parse(localStorage.getItem('memos')!) || [];
   isDark.value = JSON.parse(localStorage.getItem('isDark')!) || false;
+  category.value = JSON.parse(localStorage.getItem('category')!) || 'all';
 
   if (isDark.value) document.body.classList.add('bg-gray-800');
   else document.body.classList.remove('bg-gray-800');
@@ -58,6 +59,7 @@ watch(
 );
 
 watch(category, (newVal) => {
+  localStorage.setItem('category', JSON.stringify(newVal));
   filterMemos(newVal);
 });
 
