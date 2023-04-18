@@ -1,4 +1,4 @@
-# Simple Memo (ver1.4)
+# Simple Memo (ver1.5)
 
 You can check out the app on [my github pages](https://seiya-tagami.github.io/Simple-Memo/)!
 
@@ -6,11 +6,11 @@ You can check out the app on [my github pages](https://seiya-tagami.github.io/Si
 
 ### pc layout (light theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/230705353-f0628c69-3d7d-4d75-99a5-87b2722c01b3.png"/>
+<img src=""/>
 
 ### mobile layout (dark theme)
 
-<img src="https://user-images.githubusercontent.com/107479598/230705440-f0949dac-fecc-488c-b91a-659f91da0df4.png" height="600"/>
+<img src="" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
@@ -62,6 +62,9 @@ This product uses the following things:
 
 - **version1.4, released on 2023/04/11**  
   In the version1.4, again, I revised the whole of the UI and fix some parts. Also, I remade UI which functions as "create" and "update".
+
+- **version1.5, released on 2023/04/xx**  
+  In the version1.5, I added a category and filtering function, which makes this application more simple.
 
 ## License
 
