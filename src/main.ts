@@ -10,8 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faXmark, faCircleExclamation, faEllipsis, faCircleHalfStroke, faPen, faLink, faEraser, faSquare } from '@fortawesome/free-solid-svg-icons'
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons"
+import { faXmark, faCircleExclamation, faEllipsis, faCircleHalfStroke, faPen, faLink, faEraser, faSquare, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 library.add(faXmark, faCircleExclamation, faEllipsis, faCircleHalfStroke, faPen, faLink, faPenToSquare, faSquare, faEraser)
 
 const pinia = createPinia()

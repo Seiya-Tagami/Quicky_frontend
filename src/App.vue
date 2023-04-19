@@ -79,7 +79,7 @@ watch(isDark, (newVal) => {
       <div class="flex gap-2 mt-4">
         <ActionButton :btn-color="isDark ? `bg-blue-400` : `bg-blue-900`" @on-click="uiStore.handleRegisterModal">
           New Memo
-          <font-awesome-icon :icon="['far', 'pen-to-square']" />
+          <font-awesome-icon :icon="['fas', 'pen-to-square']" />
         </ActionButton>
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="memoStore.deleteFn">
           Delete Memo
