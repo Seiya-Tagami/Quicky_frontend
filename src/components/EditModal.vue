@@ -90,7 +90,7 @@ const updateMemo = () => {
           <option value="others">others</option>
         </select>
       </div>
-      <div class="flex items-center gap-2" v-if="props.link && !preventEditLink">
+      <div class="flex items-center gap-2 mt-3" v-if="props.link && !preventEditLink" :class="isDark && 'text-white'">
         <a
           :href="link"
           class="w-full flex items-center gap-2 border-[1px] border-gray-400 rounded-3xl px-2 py-1 whitespace-nowrap overflow-hidden"
@@ -102,9 +102,9 @@ const updateMemo = () => {
         </a>
         <font-awesome-icon :icon="['fas', 'pen-to-square']" class="w-5 h-5 cursor-pointer" @click="allowEditLink" />
       </div>
-      <div class="flex items-center gap-2 text-[16px]" :class="isDark && `text-gray-300`" v-else>
+      <div class="flex items-center gap-2 text-[16px] mt-3" :class="isDark && `text-gray-300`" v-else>
         <font-awesome-icon :icon="['fas', 'link']" />
-        <input type="text" class="w-full p-1 border-b-2 border-gray-400 outline-none" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
+        <input type="text" class="w-full p-1 border border-gray-400 rounded" :class="isDark && `bg-gray-800`" v-model="link" placeholder="add link" />
       </div>
       <div class="mt-6 ml-auto flex gap-2 w-fit">
         <ActionButton :btn-color="isDark ? `bg-gray-400` : `bg-gray-500`" @on-click="handleEditModal">Cancel</ActionButton>
