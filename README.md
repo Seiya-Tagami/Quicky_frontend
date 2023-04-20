@@ -6,11 +6,11 @@ You can check out the app on [my github pages](https://seiya-tagami.github.io/Si
 
 ### pc layout (light theme)
 
-<img src=""/>
+<img src="https://user-images.githubusercontent.com/107479598/233389181-b8908749-aaaa-41e7-9673-ac17e70e2011.png"/>
 
 ### mobile layout (dark theme)
 
-<img src="" height="600"/>
+<img src="https://user-images.githubusercontent.com/107479598/233389973-5a48438f-bb67-42f4-8417-5a6c8ad67917.png" height="600"/>
 
 1. [About](#About)
 1. [Getting started](#Getting%20started)
@@ -63,7 +63,7 @@ This product uses the following things:
 - **version1.4, released on 2023/04/11**  
   In the version1.4, again, I revised the whole of the UI and fix some parts. Also, I remade UI which functions as "create" and "update".
 
-- **version1.5, released on 2023/04/xx**  
+- **version1.5, released on 2023/04/20**  
   In the version1.5, I added a category and filtering function, which makes this application more simple.
 
 ## License
