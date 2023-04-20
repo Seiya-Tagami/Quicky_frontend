@@ -1,6 +1,6 @@
 # Simple Memo (ver1.5)
 
-You can check out the app on [my github pages](https://seiya-tagami.github.io/Simple-Memo/)!
+You can check out the app on [my github pages](https://seiya-tagami.github.io/Simple-Memo/) and [vercel](https://simple-memo-hapc4dpml-seiya-tagami.vercel.app/)＼(-o-)／
 
 ## Preview
 
